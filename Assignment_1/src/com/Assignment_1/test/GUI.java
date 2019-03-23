@@ -18,6 +18,7 @@ public class GUI extends JFrame implements ActionListener
 	//private JFileChooser chooser;
 	private JButton button1;
 	private JTextField field1;
+	public String name;
 	//FileNameExtensionFilter filter;
 	
 	//Constructor
@@ -64,7 +65,8 @@ public class GUI extends JFrame implements ActionListener
 	{
 		if(event.getSource() == button1)
 		{
-			field1.getText();
+			//field1.getText();
+			name = field1.getText();
 			
 			/*
 			chooser.setFileFilter(filter);
@@ -74,5 +76,10 @@ public class GUI extends JFrame implements ActionListener
 		       System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
 		    }*/
 		}
+	}
+	
+	public String Passer(String name)
+	{
+		return name;
 	}
 }
