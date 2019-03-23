@@ -29,9 +29,10 @@ public class GUI extends JFrame implements ActionListener
 		setLayout(new FlowLayout());
 		
 		//chooser = new JFileChooser();
-		button1 = new JButton("Enter files.");
+		button1 = new JButton("Enter");
 		field1 = new JTextField(100);
-		field1 = new JTextField("Enter word...");
+		field1 = new JTextField();
+		field1.setColumns(15);
 		//filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif");
 		
 		//Create panels
@@ -67,6 +68,8 @@ public class GUI extends JFrame implements ActionListener
 		{
 			//field1.getText();
 			sentence = field1.getText();
+			System.out.println(sentence);
+			Passer(sentence);
 			
 			/*
 			chooser.setFileFilter(filter);
@@ -78,8 +81,12 @@ public class GUI extends JFrame implements ActionListener
 		}
 	}
 	
-	public static String Passer(String sentence)
+	public static void Passer(String sentence)
 	{
-		return sentence;
+		SentenceReader.addSentence(sentence);
+		System.out.println(sentence);
+		//SentenceReader reader = new SentenceReader();
+		//reader.addSentence(sentence);
+		//return sentence;
 	}
 }
