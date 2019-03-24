@@ -83,7 +83,7 @@ public class GUI extends JFrame implements ActionListener
 	
 	public static void Passer(String sentence)
 	{
-		System.out.println(sentence);
+		System.out.println(sentence.toLowerCase());
 		SentenceReader s1 = new SentenceReader();
 		s1.addSentence(sentence);
 		//SentenceReader.addSentence(sentence);
