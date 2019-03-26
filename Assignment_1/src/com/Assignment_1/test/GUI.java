@@ -15,11 +15,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class GUI extends JFrame implements ActionListener
 {
 	//Attributes
-	//private JFileChooser chooser;
+	private JFileChooser chooser;
 	private JButton button1;
 	private JTextField field1;
 	public String sentence;
-	//FileNameExtensionFilter filter;
+	FileNameExtensionFilter filter;
 	
 	//Constructor
 	public GUI(String title)
@@ -33,7 +33,7 @@ public class GUI extends JFrame implements ActionListener
 		field1 = new JTextField(100);
 		field1 = new JTextField();
 		field1.setColumns(15);
-		//filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif");
+		filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif");
 		
 		//Create panels
 		JPanel panel1 = new JPanel();
@@ -44,7 +44,7 @@ public class GUI extends JFrame implements ActionListener
 		add(panel2, BorderLayout.SOUTH);
 		
 		//Adding attributes to the panel
-		//panel1.add(chooser);
+		panel1.add(chooser);
 		panel1.add(field1);
 		panel2.add(button1);
 		//panel1.add(filter);
@@ -71,13 +71,13 @@ public class GUI extends JFrame implements ActionListener
 			System.out.println(sentence);
 			Passer(sentence);
 			
-			/*
+			
 			chooser.setFileFilter(filter);
 		    int returnVal = chooser.showOpenDialog(null);
 		    if(returnVal == JFileChooser.APPROVE_OPTION) 
 		    {
 		       System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
-		    }*/
+		    }
 		}
 	}
 	
