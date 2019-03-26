@@ -77,6 +77,8 @@ public class SentenceReader
 	    
 	    System.out.println("This string is: "+formalp+"% formal language.");
 	    System.out.println("This string is: "+slangp+"% informal language.");
+	    
+	    System.out.println("This string is: "+slangp+"% informal language.");
 	}
 	
 	//Close the scanner
