@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -20,6 +21,7 @@ public class GUI extends JFrame implements ActionListener
 	private JTextField field1;
 	public String sentence;
 	FileNameExtensionFilter filter;
+	File selectedFile;
 	
 	//Constructor
 	public GUI(String title)
@@ -28,12 +30,12 @@ public class GUI extends JFrame implements ActionListener
 		setLayout(new BorderLayout());
 		setLayout(new FlowLayout());
 		
-		//chooser = new JFileChooser();
+		chooser = new JFileChooser();
 		button1 = new JButton("Enter");
 		field1 = new JTextField(100);
 		field1 = new JTextField();
 		field1.setColumns(15);
-		filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif");
+		filter = new FileNameExtensionFilter("txt","*.txt");
 		
 		//Create panels
 		JPanel panel1 = new JPanel();
@@ -60,6 +62,7 @@ public class GUI extends JFrame implements ActionListener
 		
 		//Link the listener to the button you want to monitor
 		button1.addActionListener(this);
+		chooser.addActionListener(this);
 	}
 		
 	public void actionPerformed(ActionEvent event) 
@@ -70,15 +73,18 @@ public class GUI extends JFrame implements ActionListener
 			sentence = field1.getText();
 			System.out.println(sentence);
 			Passer(sentence);
-			
-			
-			chooser.setFileFilter(filter);
-		    int returnVal = chooser.showOpenDialog(null);
-		    if(returnVal == JFileChooser.APPROVE_OPTION) 
-		    {
-		       System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
-		    }
 		}
+		
+		chooser.setFileFilter(filter);
+		File selectedFile = chooser.getSelectedFile();
+	    int returnVal = chooser.showOpenDialog(null);
+	    if(returnVal == JFileChooser.APPROVE_OPTION) 
+	    {
+	    	
+	    	System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
+	    	Passer2(selectedFile);
+	       //System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+	    }
 	}
 	
 	public static void Passer(String sentence)
@@ -91,5 +97,11 @@ public class GUI extends JFrame implements ActionListener
 		//SentenceReader reader = new SentenceReader();
 		//reader.addSentence(sentence);
 		//return sentence;
+	}
+	
+	public static void Passer2(File selectedFile)
+	{
+		FileReader f1 = new FileReader();
+		f1.addFile(selectedFile);
 	}
 }
