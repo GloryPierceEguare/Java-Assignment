@@ -9,8 +9,8 @@ public class SentenceReader
 	//Attributes
 	int i = 0;
 	int formal = 0;
-	int slang = 0;
-	int total = 0;
+	float slang = 0;
+	float total = 0;
 	float formalp = 0;
 	float slangp = 0;
 	File fileName;
