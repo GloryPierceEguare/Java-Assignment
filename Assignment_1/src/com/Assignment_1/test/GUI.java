@@ -35,6 +35,7 @@ public class GUI extends JFrame implements ActionListener
 		field1 = new JTextField(100);
 		field1 = new JTextField();
 		field1.setColumns(15);
+		chooser.setFileFilter(filter);
 		filter = new FileNameExtensionFilter("txt","*.txt");
 		
 		//Create panels
@@ -75,15 +76,14 @@ public class GUI extends JFrame implements ActionListener
 			Passer(sentence);
 		}
 		
-		chooser.setFileFilter(filter);
 		File selectedFile = chooser.getSelectedFile();
 	    int returnVal = chooser.showOpenDialog(null);
 	    if(returnVal == JFileChooser.APPROVE_OPTION) 
 	    {
 	    	
-	    	System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
+	    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
+	    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());
 	    	Passer2(selectedFile);
-	       //System.out.println("Selected file: " + selectedFile.getAbsolutePath());
 	    }
 	}
 	

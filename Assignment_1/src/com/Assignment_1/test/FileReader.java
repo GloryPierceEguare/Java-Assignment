@@ -17,9 +17,10 @@ public class FileReader
 			Scanner myScanner = new Scanner(selectedFile);
 			String line = myScanner.nextLine();
 			//now read the file line by line...
+			System.out.println(line);
 	        while (myScanner.hasNextLine()) 
 	        {
-	        	System.out.println(line);
+	        	System.out.println(myScanner.nextLine());
 	        }
 	        myScanner.close();
 		}
