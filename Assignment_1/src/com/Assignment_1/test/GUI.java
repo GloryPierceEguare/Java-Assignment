@@ -75,7 +75,7 @@ public class GUI extends JFrame implements ActionListener
 			System.out.println(sentence);
 			Passer(sentence);
 		}
-		
+		/*
 		File selectedFile = chooser.getSelectedFile();
 	    int returnVal = chooser.showOpenDialog(null);
 	    if(returnVal == JFileChooser.APPROVE_OPTION) 
@@ -84,7 +84,7 @@ public class GUI extends JFrame implements ActionListener
 	    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
 	    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());
 	    	Passer2(selectedFile);
-	    }
+	    }*/
 	}
 	
 	public static void Passer(String sentence)

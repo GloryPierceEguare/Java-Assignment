@@ -3,13 +3,15 @@ package com.Assignment_1.test;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SentenceReader 
 {
 	//Attributes
 	int i = 0;
 	int formal = 0;
-	float slang = 0;
+	int slang = 0;
 	float total = 0;
 	float formalp = 0;
 	float slangp = 0;
@@ -23,6 +25,20 @@ public class SentenceReader
 	    //GUI.Passer(sentence);
 		//String sentence2 = sentence.toLowerCase(); 
 	    System.out.println(sentence);
+	    
+	    //https://stackoverflow.com/questions/21430447/how-to-split-paragraphs-into-sentences
+	    Pattern re = Pattern.compile("[^.!?\\s][^.!?]*(?:[.!?](?!['\"]?\\s|$)[^.!?]*)*[.!?]?['\"]?(?=\\s|$)", Pattern.MULTILINE | Pattern.COMMENTS);
+	    Matcher reMatcher = re.matcher(sentence);
+	    while (reMatcher.find()) 
+	    {
+	        System.out.println(reMatcher.group());
+	    }
+	    
+	    if (group.charAt(0) == (group().toUpperCase().charAt(0)))
+	    {
+         	System.out.println("First letter in word "+ text + " is upper case");
+	    }
+	    
 	    String[] a1 = sentence.split(" ");    
 	    
 	    File fileName = new File("English.txt");
