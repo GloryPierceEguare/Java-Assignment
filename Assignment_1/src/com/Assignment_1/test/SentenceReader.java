@@ -32,6 +32,14 @@ public class SentenceReader
 	    Matcher reMatcher = re.matcher(sentence);
 	    while (reMatcher.find()) 
 	    {
+	    	String[] a1 = reMatcher.group().split(" ");
+	    	wordcount += 1;
+	    	
+	    	if(a1.length > 27 && reMatcher.group().indexOf(",")!=-1)
+	    	{
+	    		formal += 1;
+	    	}
+	    	
 	        System.out.println(reMatcher.group());
 	        
 	        wordcount += 1;
