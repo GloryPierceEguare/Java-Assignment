@@ -18,6 +18,7 @@ public class GUI extends JFrame implements ActionListener
 	//Attributes
 	private JFileChooser chooser;
 	private JButton button1;
+	private JButton button2;
 	private JTextField field1;
 	public String sentence;
 	FileNameExtensionFilter filter;
@@ -31,7 +32,8 @@ public class GUI extends JFrame implements ActionListener
 		setLayout(new FlowLayout());
 		
 		chooser = new JFileChooser();
-		button1 = new JButton("Enter");
+		button1 = new JButton("Choose file.");
+		button2 = new JButton("Enter text.");
 		field1 = new JTextField(100);
 		field1 = new JTextField();
 		field1.setColumns(15);
@@ -47,15 +49,16 @@ public class GUI extends JFrame implements ActionListener
 		add(panel2, BorderLayout.SOUTH);
 		
 		//Adding attributes to the panel
-		panel1.add(chooser);
-		panel1.add(field1);
+		//panel1.add(chooser);
+		//panel1.add(field1);
 		panel2.add(button1);
+		panel2.add(button2);
 		//panel1.add(filter);
 		
 		//Set screen size
 		setSize(900,600);
 		
-		//Makes the screen visible/
+		//Makes the screen visible
 		setVisible(true);
 		
 		//Set the location of the screen
@@ -63,28 +66,41 @@ public class GUI extends JFrame implements ActionListener
 		
 		//Link the listener to the button you want to monitor
 		button1.addActionListener(this);
+		button2.addActionListener(this);
 		chooser.addActionListener(this);
 	}
 		
 	public void actionPerformed(ActionEvent event) 
 	{
+		JPanel panel3 = new JPanel();
+		add(panel3, BorderLayout.CENTER);
+		
 		if(event.getSource() == button1)
 		{
+			panel3.add(chooser);
+			
+			File selectedFile = chooser.getSelectedFile();
+		    int returnVal = chooser.showOpenDialog(null);
+		    if(returnVal == JFileChooser.APPROVE_OPTION) 
+		    {
+		    	
+		    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
+		    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());
+		    	Passer2(selectedFile);
+		    }
+		}
+		
+		
+		
+		if(event.getSource() == button2)
+		{
 			//field1.getText();
+			panel3.add(field1);
+			
 			sentence = field1.getText();
 			System.out.println(sentence);
 			Passer(sentence);
 		}
-		/*
-		File selectedFile = chooser.getSelectedFile();
-	    int returnVal = chooser.showOpenDialog(null);
-	    if(returnVal == JFileChooser.APPROVE_OPTION) 
-	    {
-	    	
-	    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
-	    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());
-	    	Passer2(selectedFile);
-	    }*/
 	}
 	
 	public static void Passer(String sentence)
