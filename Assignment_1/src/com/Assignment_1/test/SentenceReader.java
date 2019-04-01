@@ -10,6 +10,7 @@ public class SentenceReader
 {
 	//Attributes
 	int i = 0;
+	int wordcount = 0;
 	int formal = 0;
 	int slang = 0;
 	float total = 0;
@@ -32,12 +33,18 @@ public class SentenceReader
 	    while (reMatcher.find()) 
 	    {
 	        System.out.println(reMatcher.group());
+	        
+	        wordcount += 1;
+	        
+	        //https://stackoverflow.com/questions/4452939/in-java-how-to-find-if-first-character-in-a-string-is-upper-case-without-regex
+	        if (reMatcher.group().charAt(0) == (reMatcher.group().toUpperCase().charAt(0)))
+		    {
+	        	formal +=1;
+	         	//System.out.println("First letter in word "+ text + " is upper case");
+		    }
 	    }
 	    
-	    if (group.charAt(0) == (group().toUpperCase().charAt(0)))
-	    {
-         	System.out.println("First letter in word "+ text + " is upper case");
-	    }
+	    
 	    
 	    String[] a1 = sentence.split(" ");    
 	    
@@ -54,12 +61,14 @@ public class SentenceReader
 	        	a1[i] = a1[i].replaceAll("[^a-zA-Z0-9]","").toLowerCase(); //https://stackoverflow.com/questions/22367028/given-a-txt-file-i-need-to-lower-case-and-remove-punctuation
 	        	System.out.println(a1[i]);
 	        	System.out.println("yep");
+	        	wordcount += 1;
+	   		 
 		        
 		        //now read the file line by line...
 		        while (myScanner.hasNextLine()) 
 		        {
 		            String line = myScanner.nextLine();
-		 
+		          
 		            //if(line.equals(sent)) 
 		            if(a1[i].equals(line))//(line.equals(a1[i]))
 		            { 
@@ -77,13 +86,14 @@ public class SentenceReader
 	    	System.out.println("No file!!");
 	    }
 	    
-	    slang = a1.length - formal;
+	    //slang = a1.length - formal;
+	    slang = wordcount - formal;
 	    
-	    total = formal + slang;
-	    System.out.println(total);
+	    //total = formal + slang;
+	    System.out.println(wordcount);
 	    
-	    formalp = (100 * formal)/total;
-	    slangp = (100 * slang)/total;
+	    formalp = (100 * formal)/wordcount;
+	    slangp = (100 * slang)/wordcount;
 	    
 	    System.out.println("This string is: "+formalp+"% formal language.");
 	    System.out.println("This string is: "+slangp+"% informal language.");
