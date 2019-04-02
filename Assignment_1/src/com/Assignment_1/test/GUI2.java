@@ -26,14 +26,15 @@ public class GUI2 extends JFrame implements ActionListener
 		
 		field1 = new JTextField(100);
 		//field1 = new JTextField();
-		field1.setColumns(15);
+		field1.setColumns(25);
 		button3 = new JButton("ENTER");
 		button4 = new JButton("HOME");
 		
-		//Add panels
+		//Create panels
 		JPanel panel3 = new JPanel();
 		JPanel panel4 = new JPanel();
 		
+		//Add panels
 		add(panel3, BorderLayout.NORTH);
 		add(panel4, BorderLayout.SOUTH);
 		

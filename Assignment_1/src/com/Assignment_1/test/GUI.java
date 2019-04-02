@@ -16,31 +16,31 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class GUI extends JFrame implements ActionListener
 {
 	//Attributes
-	private JFileChooser chooser;
+	//private JFileChooser chooser;
 	private JButton button1;
 	private JButton button2;
-	private JButton button3;
+	//private JButton button3;
 	private JTextField field1;
 	//public String sentence;
-	FileNameExtensionFilter filter;
-	File selectedFile;
+	//FileNameExtensionFilter filter;
+	//File selectedFile;
 	
 	//Constructor
 	public GUI(/*String title*/)
 	{
-		//super(title);
+		super(/*title*/);
 		setLayout(new BorderLayout());
 		setLayout(new FlowLayout());
 		
-		chooser = new JFileChooser();
+		//chooser = new JFileChooser();
 		button1 = new JButton("Choose file.");
 		button2 = new JButton("Enter text.");
-		button3 = new JButton("ENTER");
+		//button3 = new JButton("ENTER");
 		//field1 = new JTextField(100);
 		//field1 = new JTextField();
 		//field1.setColumns(15);
-		chooser.setFileFilter(filter);
-		filter = new FileNameExtensionFilter("txt","*.txt",".doc",".docx");
+		//chooser.setFileFilter(filter);
+		//filter = new FileNameExtensionFilter("txt","*.txt",".doc",".docx");
 		
 		//Create panels
 		JPanel panel1 = new JPanel();
@@ -69,20 +69,26 @@ public class GUI extends JFrame implements ActionListener
 		//Link the listener to the button you want to monitor
 		button1.addActionListener(this);
 		button2.addActionListener(this);
-		button3.addActionListener(this);
-		chooser.addActionListener(this);
+		//button3.addActionListener(this);
+		//chooser.addActionListener(this);
 	}
 		
 	public void actionPerformed(ActionEvent event) 
 	{
+		/*
 		field1 = new JTextField(100);
 		//field1 = new JTextField();
 		field1.setColumns(15);
 		JPanel panel3 = new JPanel();
-		add(panel3, BorderLayout.CENTER);
+		add(panel3, BorderLayout.CENTER);*/
 		
 		if(event.getSource() == button1)
 		{
+			this.dispose();
+			GUI3 gui3 = new GUI3();
+			gui3.setVisible(true);
+			
+			/*
 			panel3.add(chooser);
 			
 			File selectedFile = chooser.getSelectedFile();
@@ -93,7 +99,7 @@ public class GUI extends JFrame implements ActionListener
 		    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
 		    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());
 		    	Passer2(selectedFile);
-		    }
+		    }*/
 		}
 		
 		if(event.getSource() == button2)
@@ -117,6 +123,7 @@ public class GUI extends JFrame implements ActionListener
 		}
 	}
 	
+	/*
 	public static void Passer(String sentence)
 	{
 		System.out.println(sentence.toLowerCase());
@@ -133,5 +140,5 @@ public class GUI extends JFrame implements ActionListener
 	{
 		FileReader f1 = new FileReader();
 		f1.addFile(selectedFile);
-	}
+	}*/
 }
