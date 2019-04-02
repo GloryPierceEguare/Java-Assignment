@@ -19,6 +19,7 @@ public class GUI extends JFrame implements ActionListener
 	private JFileChooser chooser;
 	private JButton button1;
 	private JButton button2;
+	private JButton button3;
 	private JTextField field1;
 	public String sentence;
 	FileNameExtensionFilter filter;
@@ -34,11 +35,12 @@ public class GUI extends JFrame implements ActionListener
 		chooser = new JFileChooser();
 		button1 = new JButton("Choose file.");
 		button2 = new JButton("Enter text.");
-		field1 = new JTextField(100);
-		field1 = new JTextField();
-		field1.setColumns(15);
+		button3 = new JButton("ENTER");
+		//field1 = new JTextField(100);
+		//field1 = new JTextField();
+		//field1.setColumns(15);
 		chooser.setFileFilter(filter);
-		filter = new FileNameExtensionFilter("txt","*.txt");
+		filter = new FileNameExtensionFilter("txt","*.txt",".doc",".docx");
 		
 		//Create panels
 		JPanel panel1 = new JPanel();
@@ -67,11 +69,15 @@ public class GUI extends JFrame implements ActionListener
 		//Link the listener to the button you want to monitor
 		button1.addActionListener(this);
 		button2.addActionListener(this);
+		button3.addActionListener(this);
 		chooser.addActionListener(this);
 	}
 		
 	public void actionPerformed(ActionEvent event) 
 	{
+		field1 = new JTextField(100);
+		//field1 = new JTextField();
+		field1.setColumns(15);
 		JPanel panel3 = new JPanel();
 		add(panel3, BorderLayout.CENTER);
 		
@@ -90,16 +96,20 @@ public class GUI extends JFrame implements ActionListener
 		    }
 		}
 		
-		
-		
 		if(event.getSource() == button2)
 		{
 			//field1.getText();
 			panel3.add(field1);
+			panel3.add(button3);
 			
-			sentence = field1.getText();
-			System.out.println(sentence);
-			Passer(sentence);
+			
+			
+			if(event.getSource() == button3)
+			{
+				sentence = field1.getText();
+				System.out.println(sentence);
+				Passer(sentence);
+			}
 		}
 	}
 	
