@@ -33,10 +33,10 @@ public class SentenceReader
 	    while (reMatcher.find()) 
 	    {
 	    	String[] a1 = reMatcher.group().split(" ");
-	    	wordcount += 1;
 	    	
 	    	if(a1.length > 27 && reMatcher.group().indexOf(",")!=-1)
 	    	{
+	    		wordcount += 1;
 	    		formal += 1;
 	    	}
 	    	
