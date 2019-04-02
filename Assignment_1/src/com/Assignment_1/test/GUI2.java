@@ -15,6 +15,7 @@ public class GUI2 extends JFrame implements ActionListener
 	//Attributes
 	private JTextField field1;
 	private JButton button3;
+	private JButton button4;
 	public String sentence;
 	
 	public GUI2()
@@ -27,12 +28,18 @@ public class GUI2 extends JFrame implements ActionListener
 		//field1 = new JTextField();
 		field1.setColumns(15);
 		button3 = new JButton("ENTER");
+		button4 = new JButton("HOME");
 		
+		//Add panels
 		JPanel panel3 = new JPanel();
-		add(panel3, BorderLayout.CENTER);
+		JPanel panel4 = new JPanel();
+		
+		add(panel3, BorderLayout.NORTH);
+		add(panel4, BorderLayout.SOUTH);
 		
 		panel3.add(field1);
 		panel3.add(button3);
+		panel3.add(button4);
 		
 		//Set screen size
 		setSize(900,600);
@@ -45,6 +52,7 @@ public class GUI2 extends JFrame implements ActionListener
 		
 		//Link the listener to the button you want to monitor
 		button3.addActionListener(this);
+		button4.addActionListener(this);
 	}
 
 	@Override
@@ -55,6 +63,13 @@ public class GUI2 extends JFrame implements ActionListener
 			sentence = field1.getText();
 			System.out.println(sentence);
 			Passer(sentence);
+		}
+		
+		if(event.getSource() == button4)
+		{
+			this.dispose();
+			GUI gui = new GUI();
+			gui.setVisible(true);
 		}
 	}
 	

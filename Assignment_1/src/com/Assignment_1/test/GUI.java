@@ -26,9 +26,9 @@ public class GUI extends JFrame implements ActionListener
 	File selectedFile;
 	
 	//Constructor
-	public GUI(String title)
+	public GUI(/*String title*/)
 	{
-		super(title);
+		//super(title);
 		setLayout(new BorderLayout());
 		setLayout(new FlowLayout());
 		
@@ -98,7 +98,9 @@ public class GUI extends JFrame implements ActionListener
 		
 		if(event.getSource() == button2)
 		{
-			new GUI2().setVisible(true);
+			this.dispose();
+			GUI2 gui2 = new GUI2();
+			gui2.setVisible(true);
 			/*
 			//field1.getText();
 			panel3.add(field1);
