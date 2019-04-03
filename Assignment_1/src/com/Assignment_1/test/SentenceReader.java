@@ -37,6 +37,7 @@ public class SentenceReader
 	    	if(a1.length > 27 && reMatcher.group().indexOf(",")!=-1)
 	    	{
 	    		wordcount += 1;
+	    		slang += 1;
 	    		formal += 1;
 	    	}
 	    	
