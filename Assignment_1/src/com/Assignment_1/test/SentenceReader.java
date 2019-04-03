@@ -34,10 +34,9 @@ public class SentenceReader
 	    {
 	    	String[] a1 = reMatcher.group().split(" ");
 	    	
-	    	if(a1.length > 27 && reMatcher.group().indexOf(",")!=-1)
+	    	if(a1.length > 20 && reMatcher.group().indexOf(",")!=-1)
 	    	{
 	    		wordcount += 1;
-	    		slang += 1;
 	    		formal += 1;
 	    	}
 	    	
@@ -51,6 +50,14 @@ public class SentenceReader
 	        	formal +=1;
 	         	//System.out.println("First letter in word "+ text + " is upper case");
 		    }
+	        
+	        wordcount += 1;
+	        
+	        if(reMatcher.group().endsWith(".")||reMatcher.group().endsWith("!")||reMatcher.group().endsWith("?")) //punct = regex
+	        {
+	    		System.out.println("The Given String ends with tutorial");
+	    		formal += 1;
+	    	}
 	    }
 	    
 	    

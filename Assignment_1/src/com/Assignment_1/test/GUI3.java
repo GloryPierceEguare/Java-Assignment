@@ -29,6 +29,7 @@ public class GUI3 extends JFrame implements ActionListener
 		chooser = new JFileChooser();
 		chooser.setFileFilter(filter);
 		filter = new FileNameExtensionFilter("txt","*.txt",".doc",".docx");
+		chooser.setFileFilter(filter);
 		button5 = new JButton("HOME");
 		
 		//Create panels
