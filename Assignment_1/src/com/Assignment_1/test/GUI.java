@@ -84,7 +84,7 @@ public class GUI extends JFrame implements ActionListener
 		
 		if(event.getSource() == button1)
 		{
-			//this.dispose();
+			this.dispose();
 			GUI3 gui3 = new GUI3();
 			gui3.setVisible(true);
 			

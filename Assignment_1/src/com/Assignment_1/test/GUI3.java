@@ -27,7 +27,7 @@ public class GUI3 extends JFrame implements ActionListener
 		setLayout(new FlowLayout());
 		
 		chooser = new JFileChooser();
-		chooser.setFileFilter(filter);
+		//chooser.setFileFilter(filter);
 		filter = new FileNameExtensionFilter("txt","*.txt",".doc",".docx");
 		chooser.setFileFilter(filter);
 		button5 = new JButton("HOME");
@@ -40,20 +40,9 @@ public class GUI3 extends JFrame implements ActionListener
 		add(panel5, BorderLayout.NORTH);
 		add(panel6, BorderLayout.SOUTH);
 		
+		
 		panel5.add(chooser);
 		panel6.add(button5);
-		
-		chooser.setFileFilter(filter);
-		File selectedFile = chooser.getSelectedFile();
-		
-	    int returnVal = chooser.showOpenDialog(null);
-	    if(returnVal == JFileChooser.APPROVE_OPTION) 
-	    {
-	    	
-	    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
-	    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());
-	    	Passer2(selectedFile);
-	    }
 
 		//Set screen size
 		setSize(900,600);
@@ -67,6 +56,20 @@ public class GUI3 extends JFrame implements ActionListener
 		//Link the listener to the button you want to monitor
 		button5.addActionListener(this);
 		//chooser.addActionListener(this);
+		
+		JFileChooser chooser = new JFileChooser();
+		
+		chooser.setFileFilter(filter);
+		
+		//int returnVal = chooser.showOpenDialog(null);
+	    int returnVal = chooser.showOpenDialog(this);
+	    if(returnVal == JFileChooser.APPROVE_OPTION) 
+	    {
+	    	File selectedFile = chooser.getSelectedFile();
+	    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
+	    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());
+	    	Passer2(selectedFile);
+	    }
 	}
 
 	@Override
@@ -83,7 +86,7 @@ public class GUI3 extends JFrame implements ActionListener
 	
 	public static void Passer2(File selectedFile)
 	{
-		FileReader f1 = new FileReader();
+		FileRead f1 = new FileRead();
 		f1.addFile(selectedFile);
 	}
 }
