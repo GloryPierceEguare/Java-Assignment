@@ -55,7 +55,6 @@ public class SentenceReader
 	        
 	        if(reMatcher.group().endsWith(".")||reMatcher.group().endsWith("!")||reMatcher.group().endsWith("?")) //punct = regex
 	        {
-	    		System.out.println("The Given String ends with tutorial");
 	    		formal += 1;
 	    	}
 	    }
