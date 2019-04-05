@@ -2,7 +2,9 @@ package com.Assignment_1.test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,6 +22,7 @@ public class SentenceReader
 	File fileName2;
 	Scanner myScanner;
 	//Scanner myScanner2;
+	Set<String> dict = new HashSet<>();
 
 	public void addSentence(String sentence) 
 	{
@@ -63,22 +66,27 @@ public class SentenceReader
 	    
 	    String[] a1 = sentence.split(" ");    
 	    
-	    File fileName = new File("English.txt");
-	    //File fileName2 = new File("BadWords.txt");
+	    
+    	
 	    
 	    try 
 	    {   
-	        //for(String sent : a1) 
-	        for(i=0; i<a1.length;i++)
-		    {
-	        	Scanner myScanner = new Scanner(fileName);
-		        //System.out.println(sent);
-	        	a1[i] = a1[i].replaceAll("[^a-zA-Z0-9]","").toLowerCase(); //https://stackoverflow.com/questions/22367028/given-a-txt-file-i-need-to-lower-case-and-remove-punctuation
-	        	System.out.println(a1[i]);
-	        	System.out.println("yep");
-	        	wordcount += 1;
-	   		 
-		        
+	    	File fileName = new File("English.txt");
+		    //File fileName2 = new File("BadWords.txt");
+		    
+		    Scanner myScanner = new Scanner(fileName);
+	    	
+	    	//Scanner file = new Scanner(new File("crime_and_punishment.txt"));
+
+	    	
+	    	// For each word in the input
+	    	while (myScanner.hasNext()) 
+	    	{
+	    	    dict.add(myScanner.next());
+	    	}
+	        
+	    	 myScanner.close();
+		        /*
 		        //now read the file line by line...
 		        while (myScanner.hasNextLine()) 
 		        {
@@ -92,13 +100,28 @@ public class SentenceReader
 		                //System.out.println(sent+": Is correct English.");
 		                //break;
 		            }
-		        }
-		        myScanner.close();
-		    }     
+		        }*/
+		       
 	    } 
 	    catch(FileNotFoundException e) 
 	    { 
 	    	System.out.println("No file!!");
+	    }
+	    
+	    //for(String sent : a1) 
+        for(i=0; i<a1.length;i++)
+	    {
+	        //System.out.println(sent);
+        	a1[i] = a1[i].replaceAll("[^a-zA-Z0-9]","").toLowerCase(); //https://stackoverflow.com/questions/22367028/given-a-txt-file-i-need-to-lower-case-and-remove-punctuation
+        	System.out.println(a1[i]);
+        	System.out.println("yep");
+        	wordcount += 1;
+        	
+        	if (dict.contains(a1[i])) 
+        	{
+        		System.out.println("1");
+            	formal +=1;
+        	}
 	    }
 	    
 	    //slang = a1.length - formal;
