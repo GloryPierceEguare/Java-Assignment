@@ -89,5 +89,11 @@ public class GUI2 extends JFrame implements ActionListener
 		SentenceReader s1 = new SentenceReader();
 		s1.addSentence(sentence);
 	}
+	
+	public void results(float[] a2)
+	{
+		System.out.println("This string is: "+a2[0]+"% formal language.");
+	    System.out.println("This string is: "+a2[1]+"% informal language.");
+	}
 
 }

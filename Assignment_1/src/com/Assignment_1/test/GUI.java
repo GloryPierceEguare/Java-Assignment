@@ -149,7 +149,7 @@ public class GUI extends JFrame implements ActionListener
 		
 		if(event.getSource() == button3)
 		{
-			this.dispose();
+			System.exit(0);
 		}
 	}
 	

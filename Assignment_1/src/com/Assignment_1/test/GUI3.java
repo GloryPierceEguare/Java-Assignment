@@ -28,7 +28,8 @@ public class GUI3 extends JFrame implements ActionListener
 		
 		chooser = new JFileChooser();
 		//chooser.setFileFilter(filter);
-		filter = new FileNameExtensionFilter("txt","*.txt","doc","*.docx");
+		filter = new FileNameExtensionFilter("txt","*.txt","doc","*.doc");
+		chooser.addChoosableFileFilter(filter);
 		chooser.setFileFilter(filter);
 		button5 = new JButton("HOME");
 		

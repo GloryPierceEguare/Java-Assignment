@@ -136,6 +136,7 @@ public class SentenceReader
 	    System.out.println("This string is: "+formalp+"% formal language.");
 	    System.out.println("This string is: "+slangp+"% informal language.");
 	    
+	    result();
 	}
 	
 	//Close the scanner
@@ -143,4 +144,17 @@ public class SentenceReader
 	{
 		myScanner.close();
 	}	
+	
+	public void result()
+	{
+		float a2[] = new float[2];
+        a2[0]= formalp;
+        a2[1] =  slangp;
+        //return a2; //returning two values at once
+		
+        GUI2 r1 = new GUI2();
+        r1.results(a2);
+        
+		//return formalp, informalp;
+	}
 }
