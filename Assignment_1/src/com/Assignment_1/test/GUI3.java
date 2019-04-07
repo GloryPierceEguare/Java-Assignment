@@ -24,7 +24,7 @@ public class GUI3 extends JFrame implements ActionListener
 	{
 		super();
 		setLayout(new BorderLayout());
-		setLayout(new FlowLayout());
+		//setLayout(new FlowLayout());
 		
 		chooser = new JFileChooser();
 		//chooser.setFileFilter(filter);
@@ -57,7 +57,7 @@ public class GUI3 extends JFrame implements ActionListener
 		button5.addActionListener(this);
 		//chooser.addActionListener(this);
 		
-		JFileChooser chooser = new JFileChooser();
+		//JFileChooser chooser = new JFileChooser();
 		
 		chooser.setFileFilter(filter);
 		

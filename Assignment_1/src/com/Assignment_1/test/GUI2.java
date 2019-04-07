@@ -8,39 +8,48 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class GUI2 extends JFrame implements ActionListener
 {
 	//Attributes
 	private JTextField field1;
-	private JButton button3;
-	private JButton button4;
+	private JTextArea area1; 
+	private JButton button1;
+	private JButton button2;
 	public String sentence;
 	
 	public GUI2()
 	{
 		super();
 		setLayout(new BorderLayout());
-		setLayout(new FlowLayout());
+		//setLayout(new FlowLayout());
 		
 		field1 = new JTextField(100);
-		//field1 = new JTextField();
-		field1.setColumns(25);
-		button3 = new JButton("ENTER");
-		button4 = new JButton("HOME");
+		area1 = new JTextArea();
+		button1 = new JButton("ENTER");
+		button2 = new JButton("HOME");
+		
+		//Set size of text field and text area
+		field1.setColumns(30);
+		area1.setRows(10);
+		area1.setColumns(40);
 		
 		//Create panels
+		JPanel panel1 = new JPanel();
+		JPanel panel2 = new JPanel();
 		JPanel panel3 = new JPanel();
-		JPanel panel4 = new JPanel();
 		
 		//Add panels
-		add(panel3, BorderLayout.NORTH);
-		add(panel4, BorderLayout.SOUTH);
+		add(panel1, BorderLayout.NORTH);
+		add(panel2, BorderLayout.SOUTH);
+		add(panel3, BorderLayout.CENTER);
 		
-		panel3.add(field1);
-		panel3.add(button3);
-		panel3.add(button4);
+		panel1.add(field1);
+		panel1.add(button1);
+		panel2.add(button2);
+		panel3.add(area1);
 		
 		//Set screen size
 		setSize(900,600);
@@ -52,21 +61,21 @@ public class GUI2 extends JFrame implements ActionListener
 		setLocation(100,100);
 		
 		//Link the listener to the button you want to monitor
-		button3.addActionListener(this);
-		button4.addActionListener(this);
+		button1.addActionListener(this);
+		button2.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent event) 
 	{
-		if(event.getSource() == button3)
+		if(event.getSource() == button1)
 		{
 			sentence = field1.getText();
 			System.out.println(sentence);
 			Passer(sentence);
 		}
 		
-		if(event.getSource() == button4)
+		if(event.getSource() == button2)
 		{
 			this.dispose();
 			GUI gui = new GUI();
@@ -79,11 +88,6 @@ public class GUI2 extends JFrame implements ActionListener
 		System.out.println(sentence.toLowerCase());
 		SentenceReader s1 = new SentenceReader();
 		s1.addSentence(sentence);
-		//SentenceReader.addSentence(sentence);
-		//System.out.println(sentence);
-		//SentenceReader reader = new SentenceReader();
-		//reader.addSentence(sentence);
-		//return sentence;
 	}
 
 }
