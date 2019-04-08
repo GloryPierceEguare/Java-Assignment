@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -20,11 +21,12 @@ public class GUI2 extends JFrame implements ActionListener
 	private JButton button2;
 	private JButton button3;
 	public String sentence;
-	float a3[] = new float[2];
+	static float a3[] = new float[2];
+	int check = 0;
 	
 	public GUI2()
 	{
-		super();
+		super();//Delete before submit?
 		setLayout(new BorderLayout());
 		//setLayout(new FlowLayout());
 		
@@ -75,14 +77,23 @@ public class GUI2 extends JFrame implements ActionListener
 	{
 		if(event.getSource() == button1)
 		{
-			area1.append("This string is: % formal language.");
-			sentence = field1.getText();
-			System.out.println(sentence);
-			Passer(sentence);
+			if(field1.getText().isEmpty())
+			{
+				JOptionPane.showMessageDialog(this,"There is no text in the text box!!!");
+			}
+			else
+			{
+				//area1.append("This string is: % formal language.");
+				check = 1;
+				sentence = field1.getText();
+				System.out.println(sentence);//Delete before submit
+				Passer(sentence);
+			}
 		}
 		
 		if(event.getSource() == button2)
 		{
+			check = 0;
 			this.dispose();
 			GUI gui = new GUI();
 			gui.setVisible(true);
@@ -90,35 +101,41 @@ public class GUI2 extends JFrame implements ActionListener
 		
 		if(event.getSource() == button3)
 		{
-			//float name[] = results();
-			System.out.println("string is: "+a3[0]+"% formal language.");
-		    System.out.println("string is: "+a3[1]+"% informal language.");
-			
-			area1.append("This string is: "+a3[0]+"% formal language.\n");
-			area1.append("This string is: "+a3[1]+"% formal language.");
+			if(check == 0)
+			{
+				JOptionPane.showMessageDialog(this,"You have not entered any text yet!!!");
+			}
+			else
+			{
+				System.out.println("string is: "+a3[0]+"% formal language.");//Delete before submit
+			    System.out.println("string is: "+a3[1]+"% informal language.");//Delete before submit
+				area1.setText(null);
+				area1.append("This string is: "+a3[0]+"% formal language.\n");
+				area1.append("This string is: "+a3[1]+"% formal language.");
+			}
 		}
 	}
 	
 	public static void Passer(String sentence)
 	{
-		System.out.println(sentence.toLowerCase());
+		System.out.println(sentence.toLowerCase());//Delete before submit
 		SentenceReader s1 = new SentenceReader();
 		s1.addSentence(sentence);
 	}
 	
-	public void results(float[] a2)
+	public static void results(float[] a2)
 	{
-		System.out.println("This string is: "+a2[0]+"% formal language.");
-	    System.out.println("This string is: "+a2[1]+"% informal language.");
-	    System.out.println("--------------------------------");
+		System.out.println("This string is: "+a2[0]+"% formal language.");//Delete before submit
+	    System.out.println("This string is: "+a2[1]+"% informal language.");//Delete before submit
+	    System.out.println("--------------------------------");//Delete before submit
 	    
 	    
 	    for(int i=0;i<a2.length;++i)
 	    {
 			a3[i]=a2[i];
 		}
-	    System.out.println("string is: "+a3[0]+"% formal language.");
-	    System.out.println("string is: "+a3[1]+"% informal language.");
+	    System.out.println("string is: "+a3[0]+"% formal language.");//Delete before submit
+	    System.out.println("string is: "+a3[1]+"% informal language.");//Delete before submit
 	    
 	    //a3[0] = a2[0];
 	    //a3[1] = a2[1];

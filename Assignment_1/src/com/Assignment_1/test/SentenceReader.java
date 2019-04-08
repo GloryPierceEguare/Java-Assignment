@@ -75,7 +75,7 @@ public class SentenceReader
 	    	for(int y = 1;y < a1[j].length();y++)
 	    	{
 	    		char ch = a1[j].charAt(y);
-		    	
+	    		
 	    		if(Character.isUpperCase(ch))
 	    		{
 	    			high += 1;
@@ -178,8 +178,10 @@ public class SentenceReader
         a2[1] =  slangp;
         //return a2; //returning two values at once
 		
-        GUI2 r1 = new GUI2();
-        r1.results(a2);
+        GUI2.results(a2);
+        
+        //GUI2 r1 = new GUI2();
+        //r1.results(a2);
         
 		//return formalp, informalp;
 	}

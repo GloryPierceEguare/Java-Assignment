@@ -23,8 +23,8 @@ public class GUI extends JFrame implements ActionListener
 	private JButton button1;
 	private JButton button2;
 	private JButton button3;
-	private JTextField field1;
 	private JLabel label1;
+	//private JTextField field1;
 	//private JLabel label2;
 	//public String sentence;
 	//FileNameExtensionFilter filter;
@@ -89,7 +89,7 @@ public class GUI extends JFrame implements ActionListener
 		setLocation(100,100);
 		
 		//Set the colour of the screen
-		setBackground(Color.blue);
+		//setBackground(Color.blue);
 		
 		//Link the listener to the button you want to monitor
 		button1.addActionListener(this);

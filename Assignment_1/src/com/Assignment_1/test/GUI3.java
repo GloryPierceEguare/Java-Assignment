@@ -68,7 +68,7 @@ public class GUI3 extends JFrame implements ActionListener
 	    {
 	    	File selectedFile = chooser.getSelectedFile();
 	    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
-	    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());
+	    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());//Delete before submit
 	    	Passer2(selectedFile);
 	    }
 	}
