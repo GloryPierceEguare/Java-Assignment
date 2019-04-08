@@ -12,6 +12,7 @@ public class SentenceReader
 {
 	//Attributes
 	int i = 0;
+	int high;
 	float wordcount = 0;
 	float formal = 0;
 	float slang = 0;
@@ -65,6 +66,31 @@ public class SentenceReader
 	    
 	    
 	    String[] a1 = sentence.split(" ");    
+	    
+	    //Check if there is random capital letters in the middle of a word
+	    for(int j = 0;j < a1.length;j++)
+	    {
+	    	high = 0;
+	    	
+	    	for(int y = 1;y < a1[j].length();y++)
+	    	{
+	    		char ch = a1[j].charAt(y);
+		    	
+	    		if(Character.isUpperCase(ch))
+	    		{
+	    			high += 1;
+	    			System.out.println("High letter!");
+	    		}
+	    	}
+	    	
+	    	wordcount += 1;
+	    	
+	    	if(high == 0)
+	    	{
+	    		formal += 1;
+	    		//wordcount += 1;
+	    	}
+	    }
 	    
 	    
     	
