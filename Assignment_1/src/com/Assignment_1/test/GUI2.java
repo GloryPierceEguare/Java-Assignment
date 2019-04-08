@@ -18,7 +18,9 @@ public class GUI2 extends JFrame implements ActionListener
 	private JTextArea area1; 
 	private JButton button1;
 	private JButton button2;
+	private JButton button3;
 	public String sentence;
+	float a3[] = new float[2];
 	
 	public GUI2()
 	{
@@ -30,6 +32,7 @@ public class GUI2 extends JFrame implements ActionListener
 		area1 = new JTextArea();
 		button1 = new JButton("ENTER");
 		button2 = new JButton("HOME");
+		button3 = new JButton("SHOW RESULTS");
 		
 		//Set size of text field and text area
 		field1.setColumns(30);
@@ -48,6 +51,7 @@ public class GUI2 extends JFrame implements ActionListener
 		
 		panel1.add(field1);
 		panel1.add(button1);
+		panel1.add(button3);
 		panel2.add(button2);
 		panel3.add(area1);
 		
@@ -63,6 +67,7 @@ public class GUI2 extends JFrame implements ActionListener
 		//Link the listener to the button you want to monitor
 		button1.addActionListener(this);
 		button2.addActionListener(this);
+		button3.addActionListener(this);
 	}
 
 	@Override
@@ -70,6 +75,7 @@ public class GUI2 extends JFrame implements ActionListener
 	{
 		if(event.getSource() == button1)
 		{
+			area1.append("This string is: % formal language.");
 			sentence = field1.getText();
 			System.out.println(sentence);
 			Passer(sentence);
@@ -80,6 +86,16 @@ public class GUI2 extends JFrame implements ActionListener
 			this.dispose();
 			GUI gui = new GUI();
 			gui.setVisible(true);
+		}
+		
+		if(event.getSource() == button3)
+		{
+			//float name[] = results();
+			System.out.println("string is: "+a3[0]+"% formal language.");
+		    System.out.println("string is: "+a3[1]+"% informal language.");
+			
+			area1.append("This string is: "+a3[0]+"% formal language.\n");
+			area1.append("This string is: "+a3[1]+"% formal language.");
 		}
 	}
 	
@@ -94,6 +110,17 @@ public class GUI2 extends JFrame implements ActionListener
 	{
 		System.out.println("This string is: "+a2[0]+"% formal language.");
 	    System.out.println("This string is: "+a2[1]+"% informal language.");
+	    System.out.println("--------------------------------");
+	    
+	    
+	    for(int i=0;i<a2.length;++i)
+	    {
+			a3[i]=a2[i];
+		}
+	    System.out.println("string is: "+a3[0]+"% formal language.");
+	    System.out.println("string is: "+a3[1]+"% informal language.");
+	    
+	    //a3[0] = a2[0];
+	    //a3[1] = a2[1];
 	}
-
 }

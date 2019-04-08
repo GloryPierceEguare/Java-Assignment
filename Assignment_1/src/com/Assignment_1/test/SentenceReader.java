@@ -148,7 +148,7 @@ public class SentenceReader
 	public void result()
 	{
 		float a2[] = new float[2];
-        a2[0]= formalp;
+        a2[0] = formalp;
         a2[1] =  slangp;
         //return a2; //returning two values at once
 		
