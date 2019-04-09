@@ -23,6 +23,7 @@ public class GUI3 extends JFrame implements ActionListener
 	File selectedFile;
 	private JButton button1;
 	private JButton button2;
+	private JButton button3;
 	private JTextArea area1;
 	static float a3[] = new float[5];
 
@@ -32,13 +33,13 @@ public class GUI3 extends JFrame implements ActionListener
 		setLayout(new BorderLayout());
 		//setLayout(new FlowLayout());
 		
-		chooser = new JFileChooser();
-		//chooser.setFileFilter(filter);
-		filter = new FileNameExtensionFilter("TEXT FILES","txt","text");
+		//chooser = new JFileChooser();
+		//filter = new FileNameExtensionFilter("TEXT FILES","txt","text");
 		//chooser.addChoosableFileFilter(filter);
-		chooser.setFileFilter(filter);
+		//chooser.setFileFilter(filter);
 		button1 = new JButton("BACK");
 		button2 = new JButton("Show Results");
+		button3 = new JButton("Files");
 		area1 = new JTextArea();
 		
 		//Set size of text area
@@ -55,8 +56,9 @@ public class GUI3 extends JFrame implements ActionListener
 		add(panel2, BorderLayout.SOUTH);
 		add(panel3, BorderLayout.CENTER);
 		
-		panel1.add(chooser);
+		//panel1.add(chooser);
 		panel1.add(button2);
+		panel1.add(button3);
 		panel2.add(button1);
 		panel3.add(area1);
 
@@ -72,21 +74,13 @@ public class GUI3 extends JFrame implements ActionListener
 		//Link the listener to the button you want to monitor
 		button1.addActionListener(this);
 		button2.addActionListener(this);
+		button3.addActionListener(this);
 		//chooser.addActionListener(this);
 		
 		//JFileChooser chooser = new JFileChooser();
 		
 		//chooser.setFileFilter(filter);
 		
-		//int returnVal = chooser.showOpenDialog(null);
-	    int returnVal = chooser.showOpenDialog(this);
-	    if(returnVal == JFileChooser.APPROVE_OPTION) 
-	    {
-	    	File selectedFile = chooser.getSelectedFile();
-	    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
-	    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());//Delete before submit
-	    	Passer2(selectedFile);
-	    }
 	}
 
 	@Override
@@ -116,6 +110,24 @@ public class GUI3 extends JFrame implements ActionListener
 			}
 		}
 		
+		if(event.getSource() == button3)
+		{
+			chooser = new JFileChooser();
+			filter = new FileNameExtensionFilter("TEXT FILES","txt","text");
+			//chooser.addChoosableFileFilter(filter);
+			chooser.setFileFilter(filter);
+			
+			//int returnVal = chooser.showOpenDialog(null);
+		    int returnVal = chooser.showOpenDialog(this);
+		    if(returnVal == JFileChooser.APPROVE_OPTION) 
+		    {
+		    	File selectedFile = chooser.getSelectedFile();
+		    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
+		    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());//Delete before submit
+		    	Passer2(selectedFile);
+		    }
+
+		}
 	}
 	
 	public static void Passer2(File selectedFile)
