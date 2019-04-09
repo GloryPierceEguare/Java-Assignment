@@ -6,17 +6,22 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class GUI extends JFrame implements ActionListener
+public class GUI extends JFrame implements ActionListener, MouseListener
 {
 	//Attributes
 	//private JFileChooser chooser;
@@ -24,6 +29,9 @@ public class GUI extends JFrame implements ActionListener
 	private JButton button2;
 	private JButton button3;
 	private JLabel label1;
+	private JLabel label2;
+	private JLabel label3;
+	private JLabel label4;
 	//private JTextField field1;
 	//private JLabel label2;
 	//public String sentence;
@@ -41,19 +49,25 @@ public class GUI extends JFrame implements ActionListener
 		button1 = new JButton("Choose File");
 		button2 = new JButton("Enter Text");
 		button3 = new JButton("EXIT");
-		label1 =  new JLabel("<html><br>Welcome to the Language Analyser!<br>This program can analyse a string of text of a file based on a few factors.<br>These factors are:<br>1. Sentence Length<br>2. Correct punctuation<br>3. Correct Grammar</html>");
-		//label2 = new JLabel("<html><br><br><br>1. Sentence Length</html>");
+		//label1 =  new JLabel("<html><br>Welcome to the Language Analyser!<br>This program can analyse a string of text of a file based on a few factors.<br>These factors are:<br>1. Sentence Length<br>2. Correct punctuation<br>3. Correct Grammar</html>");
+		label1 =  new JLabel("<html><center>Welcome to the Language Analyser!</center><br>This program can analyse a string of text of a file based on a few factors.<br>These factors are:</html>");
+		label2 = new JLabel("1. Sentence Structure");
+		label3 = new JLabel("2. Correct Punctuation");
+		label4 = new JLabel("3. Correct Grammar");
 		
-		//field1 = new JTextField(100);
-		//field1 = new JTextField();
-		//field1.setColumns(15);
-		//chooser.setFileFilter(filter);
-		//filter = new FileNameExtensionFilter("txt","*.txt",".doc",".docx");
+		//Give the labels a border
+		Border border = BorderFactory.createLineBorder(Color.BLACK, 4);
+		label2.setBorder(border);
+		label3.setBorder(border);
+		label4.setBorder(border);
 		
 		//Set font size of buttons and label
 		button1.setFont (button1.getFont ().deriveFont (14.0f));
 		button2.setFont (button2.getFont ().deriveFont (14.0f));
 		label1.setFont (label1.getFont ().deriveFont (19.0f));
+		label2.setFont (label2.getFont ().deriveFont (19.0f));
+		label3.setFont (label3.getFont ().deriveFont (19.0f));
+		label4.setFont (label4.getFont ().deriveFont (19.0f));
 		
 		//Set button sizes
 		button1.setPreferredSize(new Dimension(120, 40));
@@ -64,20 +78,28 @@ public class GUI extends JFrame implements ActionListener
 		JPanel panel2 = new JPanel();
 		JPanel panel3 = new JPanel();
 		
+		panel2.setLayout(null);
+		
 		//Adding the panels
 		add(panel1, BorderLayout.NORTH);
 		add(panel2, BorderLayout.CENTER);
 		add(panel3, BorderLayout.SOUTH);
 		
 		//Adding attributes to the panel
-		//panel1.add(chooser);
-		//panel1.add(field1);
 		panel1.add(button1);
 		panel1.add(button2);
 		panel3.add(button3);
 		panel2.add(label1);
-		//panel2.add(label2);
-		//panel1.add(filter);
+		panel2.add(label2);
+		panel2.add(label3);
+		panel2.add(label4);
+		
+		//Set location of labels
+		label1.setBounds(100,20,700,100);
+		label2.setBounds(100,120,250,40);
+		label3.setBounds(100,170,250,40);
+		label4.setBounds(100,220,250,40);
+		
 		
 		//Set screen size
 		setSize(900,600);
@@ -95,36 +117,36 @@ public class GUI extends JFrame implements ActionListener
 		button1.addActionListener(this);
 		button2.addActionListener(this);
 		button3.addActionListener(this);
-		//chooser.addActionListener(this);
+		label2.addMouseListener(this);
+		label3.addMouseListener(this);
+		label4.addMouseListener(this);
+	}
+	
+	public void mouseEntered(MouseEvent event) 
+	{
+		if(event.getSource() == label2)
+		{
+			JOptionPane.showMessageDialog(this,"If sentence length is too long with no form of a break then this informal.");
+		}
+		
+		if(event.getSource() == label3)
+		{
+			JOptionPane.showMessageDialog(this,"If a sentence does not start with a capital letter or end in a\n sentence-ender e.g. fullstop then this is informal.");
+		}
+		
+		if(event.getSource() == label4)
+		{
+			JOptionPane.showMessageDialog(this,"If a word is spelled incorrectly or it does not exist then this informal.");
+		}
 	}
 		
 	public void actionPerformed(ActionEvent event) 
 	{
-		/*
-		field1 = new JTextField(100);
-		//field1 = new JTextField();
-		field1.setColumns(15);
-		JPanel panel3 = new JPanel();
-		add(panel3, BorderLayout.CENTER);*/
-		
 		if(event.getSource() == button1)
 		{
 			this.dispose();
 			GUI3 gui3 = new GUI3();
 			gui3.setVisible(true);
-			
-			/*
-			panel3.add(chooser);
-			
-			File selectedFile = chooser.getSelectedFile();
-		    int returnVal = chooser.showOpenDialog(null);
-		    if(returnVal == JFileChooser.APPROVE_OPTION) 
-		    {
-		    	
-		    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
-		    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());
-		    	Passer2(selectedFile);
-		    }*/
 		}
 		
 		if(event.getSource() == button2)
@@ -132,25 +154,32 @@ public class GUI extends JFrame implements ActionListener
 			this.dispose();
 			GUI2 gui2 = new GUI2();
 			gui2.setVisible(true);
-			/*
-			//field1.getText();
-			panel3.add(field1);
-			panel3.add(button3);
-			
-			
-			
-			if(event.getSource() == button3)
-			{
-				sentence = field1.getText();
-				System.out.println(sentence);
-				Passer(sentence);
-			}*/
 		}
 		
 		if(event.getSource() == button3)
 		{
 			System.exit(0);
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
 	}
 	
 	/*
