@@ -30,10 +30,10 @@ public class GUI2 extends JFrame implements ActionListener
 		setLayout(new BorderLayout());
 		//setLayout(new FlowLayout());
 		
-		field1 = new JTextField(100);
+		field1 = new JTextField("Enter text here...",100);
 		area1 = new JTextArea();
 		button1 = new JButton("ENTER");
-		button2 = new JButton("HOME");
+		button2 = new JButton("BACK");
 		button3 = new JButton("SHOW RESULTS");
 		
 		//Set size of text field and text area
@@ -70,6 +70,9 @@ public class GUI2 extends JFrame implements ActionListener
 		button1.addActionListener(this);
 		button2.addActionListener(this);
 		button3.addActionListener(this);
+		
+		//Show help message
+		JOptionPane.showMessageDialog(this,"Here you can enter in text and check it percentage.");
 	}
 
 	@Override
@@ -83,7 +86,6 @@ public class GUI2 extends JFrame implements ActionListener
 			}
 			else
 			{
-				//area1.append("This string is: % formal language.");
 				check = 1;
 				sentence = field1.getText();
 				System.out.println(sentence);//Delete before submit
@@ -111,7 +113,7 @@ public class GUI2 extends JFrame implements ActionListener
 			    System.out.println("string is: "+a3[1]+"% informal language.");//Delete before submit
 				area1.setText(null);
 				area1.append("This string is: "+a3[0]+"% formal language.\n");
-				area1.append("This string is: "+a3[1]+"% formal language.");
+				area1.append("This string is: "+a3[1]+"% informal language.");
 			}
 		}
 	}

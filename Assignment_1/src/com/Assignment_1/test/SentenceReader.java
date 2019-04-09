@@ -22,15 +22,10 @@ public class SentenceReader
 	File fileName;
 	File fileName2;
 	Scanner myScanner;
-	//Scanner myScanner2;
 	Set<String> dict = new HashSet<>();
 
 	public void addSentence(String sentence) 
-	{
-	    //GUI.Passer(sentence);
-		//String sentence2 = sentence.toLowerCase(); 
-	    System.out.println(sentence);
-	    
+	{ 
 	    //https://stackoverflow.com/questions/21430447/how-to-split-paragraphs-into-sentences
 	    Pattern re = Pattern.compile("[^.!?\\s][^.!?]*(?:[.!?](?!['\"]?\\s|$)[^.!?]*)*[.!?]?['\"]?(?=\\s|$)", Pattern.MULTILINE | Pattern.COMMENTS);
 	    Matcher reMatcher = re.matcher(sentence);
@@ -179,6 +174,7 @@ public class SentenceReader
         //return a2; //returning two values at once
 		
         GUI2.results(a2);
+        GUI3.results(a2);
         
         //GUI2 r1 = new GUI2();
         //r1.results(a2);
