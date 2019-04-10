@@ -28,6 +28,7 @@ public class GUI3 extends JFrame implements ActionListener
 	private JTextArea area1;
 	DecimalFormat numberFormat = new DecimalFormat("#.00");
 	static float a3[] = new float[5];
+	int check = 0;
 
 	public GUI3()
 	{
@@ -59,8 +60,8 @@ public class GUI3 extends JFrame implements ActionListener
 		add(panel3, BorderLayout.CENTER);
 		
 		//panel1.add(chooser);
-		panel1.add(button2);
 		panel1.add(button3);
+		panel1.add(button2);
 		panel2.add(button1);
 		panel3.add(area1);
 
@@ -97,12 +98,11 @@ public class GUI3 extends JFrame implements ActionListener
 		
 		if(event.getSource() == button2)
 		{
-			/*if(check == 0)
+			if(check == 0)
 			{
-				JOptionPane.showMessageDialog(this,"You have not entered any text yet!!!");
+				JOptionPane.showMessageDialog(this,"You have not entered a file yet!!!");
 			}
-			else*/
-			
+			else
 			{
 				System.out.println("string is: "+a3[0]+"% formal language.");//Delete before submit
 			    System.out.println("string is: "+a3[1]+"% informal language.");//Delete before submit
@@ -129,6 +129,7 @@ public class GUI3 extends JFrame implements ActionListener
 		    	
 		    	if(name.endsWith(".txt"))
 		    	{
+		    		check = 1;
 		    		File selectedFile = chooser.getSelectedFile();
 			    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
 			    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());//Delete before submit
