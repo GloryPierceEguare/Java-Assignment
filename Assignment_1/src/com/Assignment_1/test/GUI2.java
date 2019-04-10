@@ -30,7 +30,7 @@ public class GUI2 extends JFrame implements ActionListener
 		setLayout(new BorderLayout());
 		//setLayout(new FlowLayout());
 		
-		field1 = new JTextField("Enter text here...",100);
+		field1 = new JTextField(100);
 		area1 = new JTextArea();
 		button1 = new JButton("ENTER");
 		button2 = new JButton("BACK");

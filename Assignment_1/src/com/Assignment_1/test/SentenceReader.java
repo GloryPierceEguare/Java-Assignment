@@ -36,14 +36,27 @@ public class SentenceReader
 	    {
 	    	String[] a1 = reMatcher.group().split(" ");
 	    	
-	    	if(a1.length > 20 && reMatcher.group().indexOf(",")!=-1)
+	    	if(a1.length > 20 /*&& reMatcher.group().indexOf(",")!=-1*/) //indexOf(",")!=-1)
 	    	{
-	    		wordcount += 1;
-	    		formal += 1;
-	    		leng += 1;
+	    		if(reMatcher.group().indexOf(",")!=-1 || reMatcher.group().indexOf(";")!=-1)
+	    		{
+	    			wordcount += 1;
+		    		formal += 1;
+	    		}
+	    		else
+	    		{
+	    			wordcount += 1;
+	    			leng += 1;
+	    		}	
 	    	}
 	    	
 	        System.out.println(reMatcher.group());
+	        
+	        if(reMatcher.group().indexOf("..")!=-1)
+	        {
+	        	wordcount += 1;
+	        	punct += 1;
+	        }
 	        
 	        wordcount += 1;
 	        
@@ -100,12 +113,8 @@ public class SentenceReader
 	    try 
 	    {   
 	    	File fileName = new File("English.txt");
-		    //File fileName2 = new File("BadWords.txt");
 		    
 		    Scanner myScanner = new Scanner(fileName);
-	    	
-	    	//Scanner file = new Scanner(new File("crime_and_punishment.txt"));
-
 	    	
 	    	// For each word in the input
 	    	while (myScanner.hasNext()) 
@@ -114,26 +123,10 @@ public class SentenceReader
 	    	}
 	        
 	    	 myScanner.close();
-		        /*
-		        //now read the file line by line...
-		        while (myScanner.hasNextLine()) 
-		        {
-		            String line = myScanner.nextLine();
-		          
-		            //if(line.equals(sent)) 
-		            if(a1[i].equals(line))//(line.equals(a1[i]))
-		            { 
-		            	System.out.println("1");
-		            	formal +=1;
-		                //System.out.println(sent+": Is correct English.");
-		                //break;
-		            }
-		        }*/
-		       
 	    } 
 	    catch(FileNotFoundException e) 
 	    { 
-	    	System.out.println("No file!!");
+	    	System.out.println("Dictionary file is not found!!");
 	    }
 	    
 	    //for(String sent : a1) 
@@ -170,12 +163,6 @@ public class SentenceReader
 	    
 	    result();
 	}
-	
-	//Close the scanner
-	public void ClosingTime()
-	{
-		myScanner.close();
-	}	
 	
 	public void result()
 	{
