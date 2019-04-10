@@ -52,7 +52,8 @@ public class SentenceReader
 	    	
 	        System.out.println(reMatcher.group());
 	        
-	        if(reMatcher.group().indexOf("..")!=-1)
+	        //Check for more than one fullstop, exclamation mark or space
+	        if(reMatcher.group().indexOf("..")!=-1 || reMatcher.group().indexOf("!!")!=-1 || reMatcher.group().indexOf("  ")!=-1)
 	        {
 	        	wordcount += 1;
 	        	punct += 1;

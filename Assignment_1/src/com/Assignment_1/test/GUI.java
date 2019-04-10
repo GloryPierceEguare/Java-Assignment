@@ -49,7 +49,6 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 		button1 = new JButton("Choose File");
 		button2 = new JButton("Enter Text");
 		button3 = new JButton("EXIT");
-		//label1 =  new JLabel("<html><br>Welcome to the Language Analyser!<br>This program can analyse a string of text of a file based on a few factors.<br>These factors are:<br>1. Sentence Length<br>2. Correct punctuation<br>3. Correct Grammar</html>");
 		label1 =  new JLabel("<html><center>Welcome to the Language Analyser!</center><br>This program can analyse a string of text of a file based on a few factors.<br>These factors are:</html>");
 		label2 = new JLabel("1. Sentence Structure");
 		label3 = new JLabel("2. Correct Punctuation");
