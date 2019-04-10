@@ -111,14 +111,14 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 		if(event.getSource() == button1)
 		{
 			this.dispose();
-			GUI3 gui3 = new GUI3();
+			FileGUI gui3 = new FileGUI();
 			gui3.setVisible(true);
 		}
 		
 		if(event.getSource() == button2)
 		{
 			this.dispose();
-			GUI2 gui2 = new GUI2();
+			TextGUI gui2 = new TextGUI();
 			gui2.setVisible(true);
 		}
 		

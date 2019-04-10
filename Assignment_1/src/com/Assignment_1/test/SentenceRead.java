@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SentenceReader 
+public class SentenceRead 
 {
 	//Attributes
 	int spell = 0;
@@ -130,10 +130,8 @@ public class SentenceReader
 	    	System.out.println("Dictionary file is not found!!");
 	    }
 	    
-	    //for(String sent : a1) 
         for(i=0; i<a1.length;i++)
 	    {
-	        //System.out.println(sent);
         	a1[i] = a1[i].replaceAll("[^a-zA-Z0-9]","").toLowerCase(); //https://stackoverflow.com/questions/22367028/given-a-txt-file-i-need-to-lower-case-and-remove-punctuation
         	System.out.println(a1[i]);
         	System.out.println("yep");
@@ -175,8 +173,8 @@ public class SentenceReader
         a2[4] =  leng;
         //return a2; //returning two values at once
 		
-        GUI2.results(a2);
-        GUI3.results(a2);
+        TextGUI.results(a2);
+        FileGUI.results(a2);
         
         //GUI2 r1 = new GUI2();
         //r1.results(a2);

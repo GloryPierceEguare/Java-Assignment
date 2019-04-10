@@ -8,14 +8,17 @@ import java.util.Scanner;
 
 public class FileRead 
 {
+	BufferedReader br;
+	StringBuilder sb;
+	String sentence;
 	Scanner myScanner;
 	
 	public void addFile(File selectedFile) 
 	{
 		try
 		{
-			BufferedReader br = new BufferedReader(new FileReader(selectedFile));
-		    StringBuilder sb = new StringBuilder();
+			br = new BufferedReader(new FileReader(selectedFile));
+		    sb = new StringBuilder();
 
 		    String line = br.readLine();
 		    while (line != null) 
@@ -24,9 +27,9 @@ public class FileRead
 		      line = br.readLine();
 		    }
 
-		    String sentence = sb.toString();
+		    sentence = sb.toString();
 		    
-		    SentenceReader f1 = new SentenceReader();
+		    SentenceRead f1 = new SentenceRead();
 			f1.addSentence(sentence);
 			
 			br.close();

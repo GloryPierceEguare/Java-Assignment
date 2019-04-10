@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class GUI3 extends JFrame implements ActionListener
+public class FileGUI extends JFrame implements ActionListener
 {
 	//Attributes
 	private JButton button1;
@@ -29,7 +29,7 @@ public class GUI3 extends JFrame implements ActionListener
 	static float a3[] = new float[5];
 	int check = 0;
 
-	public GUI3()
+	public FileGUI()
 	{
 		//super();
 		setLayout(new BorderLayout());

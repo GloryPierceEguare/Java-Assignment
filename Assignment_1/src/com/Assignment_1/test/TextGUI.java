@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class GUI2 extends JFrame implements ActionListener
+public class TextGUI extends JFrame implements ActionListener
 {
 	//Attributes
 	private JTextField field1;
@@ -26,7 +26,7 @@ public class GUI2 extends JFrame implements ActionListener
 	static float a3[] = new float[5];
 	int check = 0;
 	
-	public GUI2()
+	public TextGUI()
 	{
 		super();//Delete before submit?
 		setLayout(new BorderLayout());
@@ -122,7 +122,7 @@ public class GUI2 extends JFrame implements ActionListener
 	public static void Passer(String sentence)
 	{
 		System.out.println(sentence.toLowerCase());//Delete before submit
-		SentenceReader s1 = new SentenceReader();
+		SentenceRead s1 = new SentenceRead();
 		s1.addSentence(sentence);
 	}
 	
