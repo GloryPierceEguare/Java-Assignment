@@ -2,6 +2,7 @@ package com.Assignment_1.test;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +20,6 @@ import javax.swing.border.Border;
 public class GUI extends JFrame implements ActionListener, MouseListener
 {
 	//Attributes
-	//private JFileChooser chooser;
 	private JButton button1;
 	private JButton button2;
 	private JButton button3;
@@ -65,6 +65,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 		JPanel panel2 = new JPanel();
 		JPanel panel3 = new JPanel();
 		
+		//No layout set
 		panel2.setLayout(null);
 		
 		//Adding the panels
@@ -149,13 +150,47 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
+	public void mouseEntered(MouseEvent event) 
+	{
 		// TODO Auto-generated method stub
+		
+		if(event.getSource() == label2)
+		{
+			label2.setForeground(new Color(245, 44, 9));
+			//This next line of code from: https://stackoverflow.com/questions/11686938/how-to-change-the-mouse-pointer-to-finger-pointer-in-swing
+			label2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		}
+		
+		if(event.getSource() == label3)
+		{
+			label3.setForeground(new Color(245, 44, 9));
+			label3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		}
+		
+		if(event.getSource() == label4)
+		{
+			label4.setForeground(new Color(245, 44, 9));
+			label4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		}
 	}
 	
 	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+	public void mouseExited(MouseEvent event) 
+	{	
+		if(event.getSource() == label2)
+		{
+			label2.setForeground(new Color(67, 62, 61));
+		}
+		
+		if(event.getSource() == label3)
+		{
+			label3.setForeground(new Color(67, 62, 61));
+		}
+		
+		if(event.getSource() == label4)
+		{
+			label4.setForeground(new Color(67, 62, 61));
+		}
 	}
 
 	@Override
@@ -167,23 +202,4 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
-	
-	/*
-	public static void Passer(String sentence)
-	{
-		System.out.println(sentence.toLowerCase());
-		SentenceReader s1 = new SentenceReader();
-		s1.addSentence(sentence);
-		//SentenceReader.addSentence(sentence);
-		//System.out.println(sentence);
-		//SentenceReader reader = new SentenceReader();
-		//reader.addSentence(sentence);
-		//return sentence;
-	}
-	
-	public static void Passer2(File selectedFile)
-	{
-		FileReader f1 = new FileReader();
-		f1.addFile(selectedFile);
-	}*/
 }

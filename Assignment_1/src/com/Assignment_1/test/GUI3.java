@@ -17,13 +17,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class GUI3 extends JFrame implements ActionListener
 {
 	//Attributes
-	private JFileChooser chooser;
-	FileNameExtensionFilter filter;
-	File selectedFile;
 	private JButton button1;
 	private JButton button2;
 	private JButton button3;
 	private JTextArea area1;
+	private JFileChooser chooser;
+	FileNameExtensionFilter filter;
+	File selectedFile;
 	DecimalFormat twodec = new DecimalFormat("#.00");
 	DecimalFormat zerodec = new DecimalFormat("#");
 	static float a3[] = new float[5];
@@ -72,7 +72,6 @@ public class GUI3 extends JFrame implements ActionListener
 		button1.addActionListener(this);
 		button2.addActionListener(this);
 		button3.addActionListener(this);
-		//chooser.addActionListener(this);
 		
 		//Show help message
 		JOptionPane.showMessageDialog(this,"Instructions:\n1. Press 'File' to enter the file explorer.\n2. Choose the file that you want to analyse.\n3. Press 'Open' to select that file.\n4. Press 'Show Results' to display your results.");
@@ -108,10 +107,8 @@ public class GUI3 extends JFrame implements ActionListener
 		{
 			chooser = new JFileChooser();
 			filter = new FileNameExtensionFilter("TEXT FILES","txt","text");
-			//chooser.addChoosableFileFilter(filter);
 			chooser.setFileFilter(filter);
 			
-			//int returnVal = chooser.showOpenDialog(null);
 		    int returnVal = chooser.showOpenDialog(this);
 		    
 		    if(returnVal == JFileChooser.APPROVE_OPTION) 

@@ -1,7 +1,6 @@
 package com.Assignment_1.test;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
@@ -31,7 +30,6 @@ public class GUI2 extends JFrame implements ActionListener
 	{
 		super();//Delete before submit?
 		setLayout(new BorderLayout());
-		//setLayout(new FlowLayout());
 		
 		field1 = new JTextField(100);
 		area1 = new JTextArea();
@@ -141,8 +139,5 @@ public class GUI2 extends JFrame implements ActionListener
 		}
 	    System.out.println("string is: "+a3[0]+"% formal language.");//Delete before submit
 	    System.out.println("string is: "+a3[1]+"% informal language.");//Delete before submit
-	    
-	    //a3[0] = a2[0];
-	    //a3[1] = a2[1];
 	}
 }
