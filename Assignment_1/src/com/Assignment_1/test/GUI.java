@@ -3,23 +3,18 @@ package com.Assignment_1.test;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.Border;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class GUI extends JFrame implements ActionListener, MouseListener
 {
@@ -32,20 +27,13 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 	private JLabel label2;
 	private JLabel label3;
 	private JLabel label4;
-	//private JTextField field1;
-	//private JLabel label2;
-	//public String sentence;
-	//FileNameExtensionFilter filter;
-	//File selectedFile;
 	
 	//Constructor
 	public GUI(/*String title*/)
 	{
-		super(/*title*/);
+		//super(/*title*/);
 		setLayout(new BorderLayout());
-		//setLayout(new FlowLayout());
-		
-		//chooser = new JFileChooser();
+	
 		button1 = new JButton("Choose File");
 		button2 = new JButton("Enter Text");
 		button3 = new JButton("EXIT");
@@ -99,7 +87,6 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 		label3.setBounds(100,180,250,40);
 		label4.setBounds(100,230,250,40);
 		
-		
 		//Set screen size
 		setSize(900,600);
 		
@@ -108,9 +95,6 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 		
 		//Set the location of the screen
 		setLocation(100,100);
-		
-		//Set the colour of the screen
-		//setBackground(Color.blue);
 		
 		//Link the listener to the button you want to monitor
 		button1.addActionListener(this);

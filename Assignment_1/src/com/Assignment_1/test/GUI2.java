@@ -22,7 +22,8 @@ public class GUI2 extends JFrame implements ActionListener
 	private JButton button2;
 	private JButton button3;
 	public String sentence;
-	DecimalFormat numberFormat = new DecimalFormat("#.00");
+	DecimalFormat twodec = new DecimalFormat("#.00");
+	DecimalFormat zerodec = new DecimalFormat("#");
 	static float a3[] = new float[5];
 	int check = 0;
 	
@@ -74,7 +75,7 @@ public class GUI2 extends JFrame implements ActionListener
 		button3.addActionListener(this);
 		
 		//Show help message
-		JOptionPane.showMessageDialog(this,"Here you can enter in text and check it percentage.");
+		JOptionPane.showMessageDialog(this,"Instructions:\n1. Enter text in the provided text box.\n2. Press 'Enter' to enter this text.\n3. Press 'Show Results' to display the outcome.");
 	}
 
 	@Override
@@ -114,8 +115,8 @@ public class GUI2 extends JFrame implements ActionListener
 				System.out.println("string is: "+a3[0]+"% formal language.");//Delete before submit
 			    System.out.println("string is: "+a3[1]+"% informal language.");//Delete before submit
 				area1.setText(null);
-				area1.append("This text is: "+numberFormat.format(a3[0])+"% formal language.\nThis text is: "+a3[1]+"% informal language.");
-				area1.append("\nSpelling Errors: "+numberFormat.format(a3[2])+"\nPunctuation Errors: "+a3[3]+"\nSentence Structure Errors: "+a3[4]);
+				area1.append("This text is: "+twodec.format(a3[0])+"% formal language.\nThis text is: "+twodec.format(a3[1])+"% informal language.");
+				area1.append("\nSpelling Errors: "+zerodec.format(a3[2])+"\nPunctuation Errors: "+zerodec.format(a3[3])+"\nSentence Structure Errors: "+zerodec.format(a3[4]));
 			}
 		}
 	}
