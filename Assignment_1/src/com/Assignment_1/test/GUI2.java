@@ -112,7 +112,7 @@ public class GUI2 extends JFrame implements ActionListener
 				System.out.println("string is: "+a3[0]+"% formal language.");//Delete before submit
 			    System.out.println("string is: "+a3[1]+"% informal language.");//Delete before submit
 				area1.setText(null);
-				area1.append("This string is: "+a3[0]+"% formal language.\nThis string is: "+a3[1]+"% informal language.");
+				area1.append("This text is: "+a3[0]+"% formal language.\nThis text is: "+a3[1]+"% informal language.");
 				area1.append("\nSpelling Errors: "+a3[2]+"\nPunctuation Errors: "+a3[3]+"\nSentence Structure Errors: "+a3[4]);
 			}
 		}
