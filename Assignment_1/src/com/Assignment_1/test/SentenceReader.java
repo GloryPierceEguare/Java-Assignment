@@ -25,7 +25,7 @@ public class SentenceReader
 	File fileName;
 	File fileName2;
 	Scanner myScanner;
-	Set<String> dict = new HashSet<>();
+	private Set<String> dict = new HashSet<>();
 
 	public void addSentence(String sentence) 
 	{ 
@@ -68,9 +68,7 @@ public class SentenceReader
 	        {
 	        	punct += 1;
 	        }
-	    }
-	    
-	    
+	    } 
 	    
 	    String[] a1 = sentence.split(" ");    
 	    
@@ -99,9 +97,6 @@ public class SentenceReader
 	    	}
 	    }
 	    
-	    
-    	
-	    
 	    try 
 	    {   
 	    	File fileName = new File("English.txt");
@@ -115,7 +110,7 @@ public class SentenceReader
 	    	// For each word in the input
 	    	while (myScanner.hasNext()) 
 	    	{
-	    	    dict.add(myScanner.next());
+	    	    getDict().add(myScanner.next());
 	    	}
 	        
 	    	 myScanner.close();
@@ -150,7 +145,7 @@ public class SentenceReader
         	System.out.println("yep");
         	wordcount += 1;
         	
-        	if (dict.contains(a1[i])) 
+        	if (getDict().contains(a1[i])) 
         	{
         		System.out.println("1");
             	formal +=1;
@@ -199,5 +194,13 @@ public class SentenceReader
         //r1.results(a2);
         
 		//return formalp, informalp;
+	}
+
+	public Set<String> getDict() {
+		return dict;
+	}
+
+	public void setDict(Set<String> dict) {
+		this.dict = dict;
 	}
 }

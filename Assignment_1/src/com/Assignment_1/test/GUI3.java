@@ -137,7 +137,6 @@ public class GUI3 extends JFrame implements ActionListener
 		    		JOptionPane.showMessageDialog(this,"This not a text file!");
 		    	}
 		    }
-
 		}
 	}
 	
@@ -160,8 +159,5 @@ public class GUI3 extends JFrame implements ActionListener
 		}
 	    System.out.println("string is: "+a3[0]+"% formal language.");//Delete before submit
 	    System.out.println("string is: "+a3[1]+"% informal language.");//Delete before submit
-	    
-	    //a3[0] = a2[0];
-	    //a3[1] = a2[1];
 	}
 }

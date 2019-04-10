@@ -96,9 +96,9 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 		
 		//Set location of labels
 		label1.setBounds(100,20,700,100);
-		label2.setBounds(100,120,250,40);
-		label3.setBounds(100,170,250,40);
-		label4.setBounds(100,220,250,40);
+		label2.setBounds(100,130,250,40);
+		label3.setBounds(100,180,250,40);
+		label4.setBounds(100,230,250,40);
 		
 		
 		//Set screen size
