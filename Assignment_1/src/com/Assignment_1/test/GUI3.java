@@ -119,12 +119,23 @@ public class GUI3 extends JFrame implements ActionListener
 			
 			//int returnVal = chooser.showOpenDialog(null);
 		    int returnVal = chooser.showOpenDialog(this);
+		    
 		    if(returnVal == JFileChooser.APPROVE_OPTION) 
 		    {
-		    	File selectedFile = chooser.getSelectedFile();
-		    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
-		    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());//Delete before submit
-		    	Passer2(selectedFile);
+		    	String name = chooser.getSelectedFile().getName();
+		    	System.out.println(name);
+		    	
+		    	if(name.endsWith(".txt"))
+		    	{
+		    		File selectedFile = chooser.getSelectedFile();
+			    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
+			    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());//Delete before submit
+			    	Passer2(selectedFile);
+		    	}
+		    	else
+		    	{
+		    		JOptionPane.showMessageDialog(this,"This not a text file!");
+		    	}
 		    }
 
 		}
