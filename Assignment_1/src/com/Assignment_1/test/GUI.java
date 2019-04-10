@@ -121,24 +121,6 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 		label3.addMouseListener(this);
 		label4.addMouseListener(this);
 	}
-	
-	public void mouseEntered(MouseEvent event) 
-	{
-		if(event.getSource() == label2)
-		{
-			JOptionPane.showMessageDialog(this,"If sentence length is too long with no form of a break then this informal.");
-		}
-		
-		if(event.getSource() == label3)
-		{
-			JOptionPane.showMessageDialog(this,"If a sentence does not start with a capital letter or end in a\n sentence-ender e.g. fullstop then this is informal.");
-		}
-		
-		if(event.getSource() == label4)
-		{
-			JOptionPane.showMessageDialog(this,"If a word is spelled incorrectly or it does not exist then this informal.");
-		}
-	}
 		
 	public void actionPerformed(ActionEvent event) 
 	{
@@ -163,10 +145,31 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
+	public void mouseClicked(MouseEvent event) 
+	{
 		// TODO Auto-generated method stub	
+		
+		if(event.getSource() == label2)
+		{
+			JOptionPane.showMessageDialog(this,"If sentence length is too long with no form of a break then this informal.");
+		}
+		
+		if(event.getSource() == label3)
+		{
+			JOptionPane.showMessageDialog(this,"If a sentence does not start with a capital letter or end in a\n sentence-ender e.g. fullstop then this is informal.");
+		}
+		
+		if(event.getSource() == label4)
+		{
+			JOptionPane.showMessageDialog(this,"If a word is spelled incorrectly or it does not exist then this informal.");
+		}
 	}
 
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+	
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
