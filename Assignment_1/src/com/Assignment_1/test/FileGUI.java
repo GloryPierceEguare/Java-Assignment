@@ -22,12 +22,12 @@ public class FileGUI extends JFrame implements ActionListener
 	private JButton button3;
 	private JTextArea area1;
 	private JFileChooser chooser;
-	FileNameExtensionFilter filter;
+	private FileNameExtensionFilter filter;
 	private File selectedFile;
 	private DecimalFormat twodec = new DecimalFormat("#.00");
 	private DecimalFormat zerodec = new DecimalFormat("#");
 	static float a3[] = new float[5];
-	int check = 0;
+	private int check = 0;
 
 	public FileGUI()
 	{

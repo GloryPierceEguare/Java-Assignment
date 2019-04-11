@@ -24,7 +24,7 @@ public class TextGUI extends JFrame implements ActionListener
 	private DecimalFormat twodec = new DecimalFormat("#.00");
 	private DecimalFormat zerodec = new DecimalFormat("#");
 	private static float a3[] = new float[5];
-	int check = 0;
+	private int check = 0;
 	
 	public TextGUI()
 	{

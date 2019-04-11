@@ -11,13 +11,13 @@ import java.util.regex.Pattern;
 public class TextRead 
 {
 	//Attributes
-	int spell, punct, leng = 0;
-	int i, j, y = 0;
-	int high;
-	float wordcount = 0;
-	float formal, slang = 0;
-	float total = 0;
-	float formalp, slangp = 0;
+	private int spell, punct, leng = 0;
+	private int i, j, y = 0;
+	private int high;
+	private float wordcount = 0;
+	private float formal, slang = 0;
+	private float total = 0;
+	private float formalp, slangp = 0;
 	private File fileName;
 	private Scanner myScanner;
 	private Set<String> dict = new HashSet<>();
