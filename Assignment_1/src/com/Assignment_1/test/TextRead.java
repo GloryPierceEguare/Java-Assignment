@@ -20,7 +20,7 @@ public class TextRead
 {
 	//Attributes
 	private int spell, punct, leng = 0;
-	private int i, j, y = 0;
+	private int i, y = 0;
 	private int high;
 	private float wordcount = 0;
 	private float formal, slang = 0;
@@ -51,8 +51,6 @@ public class TextRead
 	    			leng += 1;
 	    		}	
 	    	}
-	    	
-	        System.out.println(reMatcher.group());
 	        
 	        //Check for more than one fullstop, exclamation mark or space
 	        if(reMatcher.group().indexOf("..")!=-1 || reMatcher.group().indexOf("!!")!=-1 || reMatcher.group().indexOf("  ")!=-1)
@@ -87,33 +85,6 @@ public class TextRead
 	    
 	    String[] a1 = sentence.split(" ");    
 	    
-	    //Check if there is random capital letters in the middle of a word
-	    for(j = 0;j < a1.length;j++)
-	    {
-	    	high = 0;
-	    	
-	    	for(y = 1;y < a1[j].length();y++)
-	    	{
-	    		char ch = a1[j].charAt(y);
-	    		
-	    		if(Character.isUpperCase(ch))
-	    		{
-	    			high += 1;
-	    		}
-	    	}
-	    	
-	    	wordcount += 1;
-	    	
-	    	if(high == 0)
-	    	{
-	    		formal += 1;
-	    	}
-	    	else
-	    	{
-	    		punct += 1;
-	    	}
-	    }
-	    
 	    try 
 	    {   
 	    	fileName = new File("English.txt");
@@ -136,14 +107,36 @@ public class TextRead
         for(i=0; i<a1.length;i++)
 	    {
         	a1[i] = a1[i].replaceAll("[^a-zA-Z0-9]","").toLowerCase(); //https://stackoverflow.com/questions/22367028/given-a-txt-file-i-need-to-lower-case-and-remove-punctuation
-        	System.out.println(a1[i]);
-        	System.out.println("yep");
+        	
         	wordcount += 1;
         	
         	if (dict.contains(a1[i])) 
         	{
-        		System.out.println("1");
             	formal +=1;
+            	
+            	//Check if there is random capital letters in the middle of a word
+    	    	high = 0;
+    	    	
+    	    	for(y = 1;y < a1[i].length();y++)
+    	    	{
+    	    		char ch = a1[i].charAt(y);
+    	    		
+    	    		if(Character.isUpperCase(ch))
+    	    		{
+    	    			high += 1;
+    	    		}
+    	    	}
+    	    	
+    	    	wordcount += 1;
+    	    	
+    	    	if(high == 0)
+    	    	{
+    	    		formal += 1;
+    	    	}
+    	    	else
+    	    	{
+    	    		punct += 1;
+    	    	}  
         	}
         	else
         	{
@@ -153,13 +146,8 @@ public class TextRead
 	    
 	    slang = wordcount - formal;
 	    
-	    System.out.println(wordcount);
-	    
 	    formalp = (100 * formal)/wordcount;
 	    slangp = (100 * slang)/wordcount;
-	    
-	    System.out.println("This string is: "+formalp+"% formal language.");
-	    System.out.println("This string is: "+slangp+"% informal language.");
 	    
 	    result();
 	}
