@@ -8,23 +8,18 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SentenceRead 
+public class TextRead 
 {
 	//Attributes
-	int spell = 0;
-	int punct = 0;
-	int leng = 0;
-	int i = 0;
+	int spell, punct, leng = 0;
+	int i, j, y = 0;
 	int high;
 	float wordcount = 0;
-	float formal = 0;
-	float slang = 0;
+	float formal, slang = 0;
 	float total = 0;
-	float formalp = 0;
-	float slangp = 0;
-	File fileName;
-	File fileName2;
-	Scanner myScanner;
+	float formalp, slangp = 0;
+	private File fileName;
+	private Scanner myScanner;
 	private Set<String> dict = new HashSet<>();
 
 	public void addSentence(String sentence) 
@@ -87,11 +82,11 @@ public class SentenceRead
 	    String[] a1 = sentence.split(" ");    
 	    
 	    //Check if there is random capital letters in the middle of a word
-	    for(int j = 0;j < a1.length;j++)
+	    for(j = 0;j < a1.length;j++)
 	    {
 	    	high = 0;
 	    	
-	    	for(int y = 1;y < a1[j].length();y++)
+	    	for(y = 1;y < a1[j].length();y++)
 	    	{
 	    		char ch = a1[j].charAt(y);
 	    		
@@ -107,23 +102,22 @@ public class SentenceRead
 	    	if(high == 0)
 	    	{
 	    		formal += 1;
-	    		//wordcount += 1;
 	    	}
 	    }
 	    
 	    try 
 	    {   
-	    	File fileName = new File("English.txt");
+	    	setFileName(new File("English.txt"));
 		    
-		    Scanner myScanner = new Scanner(fileName);
+		    setMyScanner(new Scanner(getFileName()));
 	    	
 	    	// For each word in the input
-	    	while (myScanner.hasNext()) 
+	    	while (getMyScanner().hasNext()) 
 	    	{
-	    	    getDict().add(myScanner.next());
+	    	    getDict().add(getMyScanner().next());
 	    	}
 	        
-	    	 myScanner.close();
+	    	 getMyScanner().close();
 	    } 
 	    catch(FileNotFoundException e) 
 	    { 
@@ -171,22 +165,38 @@ public class SentenceRead
         a2[2] =  spell;
         a2[3] =  punct;
         a2[4] =  leng;
-        //return a2; //returning two values at once
 		
         TextGUI.results(a2);
         FileGUI.results(a2);
-        
-        //GUI2 r1 = new GUI2();
-        //r1.results(a2);
-        
-		//return formalp, informalp;
 	}
 
-	public Set<String> getDict() {
+	//Getter & Setter: Dict
+	public Set<String> getDict() 
+	{
 		return dict;
 	}
-
-	public void setDict(Set<String> dict) {
+	public void setDict(Set<String> dict) 
+	{
 		this.dict = dict;
+	}
+
+	//Getter & Setter: MyScanner
+	public Scanner getMyScanner()
+	{
+		return myScanner;
+	}
+	public void setMyScanner(Scanner myScanner) 
+	{
+		this.myScanner = myScanner;
+	}
+
+	//Getter & Setter: FileName
+	public File getFileName() 
+	{
+		return fileName;
+	}
+	public void setFileName(File fileName) 
+	{
+		this.fileName = fileName;
 	}
 }

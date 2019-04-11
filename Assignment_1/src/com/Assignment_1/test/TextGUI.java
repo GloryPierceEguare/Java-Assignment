@@ -20,10 +20,10 @@ public class TextGUI extends JFrame implements ActionListener
 	private JButton button1;
 	private JButton button2;
 	private JButton button3;
-	public String sentence;
-	DecimalFormat twodec = new DecimalFormat("#.00");
-	DecimalFormat zerodec = new DecimalFormat("#");
-	static float a3[] = new float[5];
+	private String sentence;
+	private DecimalFormat twodec = new DecimalFormat("#.00");
+	private DecimalFormat zerodec = new DecimalFormat("#");
+	private static float a3[] = new float[5];
 	int check = 0;
 	
 	public TextGUI()
@@ -52,6 +52,7 @@ public class TextGUI extends JFrame implements ActionListener
 		add(panel2, BorderLayout.SOUTH);
 		add(panel3, BorderLayout.CENTER);
 		
+		//Add attributes to panels
 		panel1.add(field1);
 		panel1.add(button1);
 		panel1.add(button3);
@@ -88,9 +89,9 @@ public class TextGUI extends JFrame implements ActionListener
 			else
 			{
 				check = 1;
-				sentence = field1.getText();
-				System.out.println(sentence);//Delete before submit
-				Passer(sentence);
+				setSentence(field1.getText());
+				System.out.println(getSentence());//Delete before submit
+				Passer(getSentence());
 			}
 		}
 		
@@ -110,11 +111,11 @@ public class TextGUI extends JFrame implements ActionListener
 			}
 			else
 			{
-				System.out.println("string is: "+a3[0]+"% formal language.");//Delete before submit
-			    System.out.println("string is: "+a3[1]+"% informal language.");//Delete before submit
+				System.out.println("string is: "+getA3()[0]+"% formal language.");//Delete before submit
+			    System.out.println("string is: "+getA3()[1]+"% informal language.");//Delete before submit
 				area1.setText(null);
-				area1.append("This text is: "+twodec.format(a3[0])+"% formal language.\nThis text is: "+twodec.format(a3[1])+"% informal language.");
-				area1.append("\nSpelling Errors: "+zerodec.format(a3[2])+"\nPunctuation Errors: "+zerodec.format(a3[3])+"\nSentence Structure Errors: "+zerodec.format(a3[4]));
+				area1.append("This text is: "+getTwodec().format(getA3()[0])+"% formal language.\nThis text is: "+getTwodec().format(getA3()[1])+"% informal language.");
+				area1.append("\n\nSpelling Errors: "+getZerodec().format(getA3()[2])+"\nPunctuation Errors: "+getZerodec().format(getA3()[3])+"\nSentence Structure Errors: "+getZerodec().format(getA3()[4]));
 			}
 		}
 	}
@@ -122,7 +123,7 @@ public class TextGUI extends JFrame implements ActionListener
 	public static void Passer(String sentence)
 	{
 		System.out.println(sentence.toLowerCase());//Delete before submit
-		SentenceRead s1 = new SentenceRead();
+		TextRead s1 = new TextRead();
 		s1.addSentence(sentence);
 	}
 	
@@ -135,9 +136,49 @@ public class TextGUI extends JFrame implements ActionListener
 	    
 	    for(int i=0;i<a2.length;++i)
 	    {
-			a3[i]=a2[i];
+			getA3()[i]=a2[i];
 		}
-	    System.out.println("string is: "+a3[0]+"% formal language.");//Delete before submit
-	    System.out.println("string is: "+a3[1]+"% informal language.");//Delete before submit
+	    System.out.println("string is: "+getA3()[0]+"% formal language.");//Delete before submit
+	    System.out.println("string is: "+getA3()[1]+"% informal language.");//Delete before submit
+	}
+
+	//Getter & Setter: Sentence
+	public String getSentence() 
+	{
+		return sentence;
+	}
+	public void setSentence(String sentence) 
+	{
+		this.sentence = sentence;
+	}
+
+	//Getter & Setter: Twodec
+	public DecimalFormat getTwodec() 
+	{
+		return twodec;
+	}
+	public void setTwodec(DecimalFormat twodec) 
+	{
+		this.twodec = twodec;
+	}
+
+	//Getter & Setter: Zerodec
+	public DecimalFormat getZerodec() 
+	{
+		return zerodec;
+	}
+	public void setZerodec(DecimalFormat zerodec) 
+	{
+		this.zerodec = zerodec;
+	}
+
+	//Getter & Setter: a3[]
+	public static float[] getA3() 
+	{
+		return a3;
+	}
+	public static void setA3(float a3[]) 
+	{
+		TextGUI.a3 = a3;
 	}
 }

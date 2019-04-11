@@ -23,9 +23,9 @@ public class FileGUI extends JFrame implements ActionListener
 	private JTextArea area1;
 	private JFileChooser chooser;
 	FileNameExtensionFilter filter;
-	File selectedFile;
-	DecimalFormat twodec = new DecimalFormat("#.00");
-	DecimalFormat zerodec = new DecimalFormat("#");
+	private File selectedFile;
+	private DecimalFormat twodec = new DecimalFormat("#.00");
+	private DecimalFormat zerodec = new DecimalFormat("#");
 	static float a3[] = new float[5];
 	int check = 0;
 
@@ -98,8 +98,8 @@ public class FileGUI extends JFrame implements ActionListener
 				System.out.println("string is: "+a3[0]+"% formal language.");//Delete before submit
 			    System.out.println("string is: "+a3[1]+"% informal language.");//Delete before submit
 				area1.setText(null);
-				area1.append("This file is: "+twodec.format(a3[0])+"% formal language.\nThis file is: "+twodec.format(a3[1])+"% informal language.");
-				area1.append("\nSpelling Errors: "+zerodec.format(a3[2])+"\nPunctuation Errors: "+zerodec.format(a3[3])+"\nSentence Structure Errors: "+zerodec.format(a3[4]));
+				area1.append("This file is: "+getTwodec().format(a3[0])+"% formal language.\nThis file is: "+getTwodec().format(a3[1])+"% informal language.");
+				area1.append("\n\nSpelling Errors: "+getZerodec().format(a3[2])+"\nPunctuation Errors: "+getZerodec().format(a3[3])+"\nSentence Structure Errors: "+getZerodec().format(a3[4]));
 			}
 		}
 		
@@ -151,5 +151,35 @@ public class FileGUI extends JFrame implements ActionListener
 		}
 	    System.out.println("string is: "+a3[0]+"% formal language.");//Delete before submit
 	    System.out.println("string is: "+a3[1]+"% informal language.");//Delete before submit
+	}
+
+	//Getter & Setter: SelectedFile
+	public File getSelectedFile() 
+	{
+		return selectedFile;
+	}
+	public void setSelectedFile(File selectedFile) 
+	{
+		this.selectedFile = selectedFile;
+	}
+
+	//Getter & Setter: Twodec
+	public DecimalFormat getTwodec() 
+	{
+		return twodec;
+	}
+	public void setTwodec(DecimalFormat twodec) 
+	{
+		this.twodec = twodec;
+	}
+
+	//Getter & Setter Zerodec
+	public DecimalFormat getZerodec() 
+	{
+		return zerodec;
+	}
+	public void setZerodec(DecimalFormat zerodec) 
+	{
+		this.zerodec = zerodec;
 	}
 }
