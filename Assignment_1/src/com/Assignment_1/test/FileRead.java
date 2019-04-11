@@ -1,3 +1,11 @@
+/*******************************************
+ * FileRead: the purpose of this class is to take in the file chosen
+ * by the user in the FileGUI class and convert it into a string so
+ * that it can be sent to the TextRead class to be analysed.
+ * Author: Glory Pierce Eguare
+ * OS: WIndows
+ */
+
 package com.Assignment_1.test;
 
 import java.io.BufferedReader;
@@ -18,66 +26,26 @@ public class FileRead
 		//Write contents of a text file into a string
 		try
 		{
-			setBr(new BufferedReader(new FileReader(selectedFile)));
-		    setSb(new StringBuilder());
+			br = new BufferedReader(new FileReader(selectedFile));
+			sb = new StringBuilder();
 
-		    setLine(getBr().readLine());
-		    while (getLine() != null) 
+		    line = br.readLine();
+		    while (line != null) 
 		    {
-		    	getSb().append(getLine()).append("\n");
-		    	setLine(getBr().readLine());
+		    	sb.append(line).append("\n");
+		    	line = br.readLine();
 		    }
 
-		    setSentence(getSb().toString());
+		    sentence = sb.toString();
 		    
 		    TextRead f1 = new TextRead();
-			f1.addSentence(getSentence());
+		    f1.addSentence(sentence);
 			
-			getBr().close();
+			br.close();
 		}
 		catch(IOException e)
 		{
 			System.out.println("No file!!");
 		}
-	}
-
-	//Getter & Setter: Sentence
-	public String getSentence() 
-	{
-		return sentence;
-	}
-	public void setSentence(String sentence) 
-	{
-		this.sentence = sentence;
-	}
-
-	//Getter & Setter: BufferedReader br
-	public BufferedReader getBr() 
-	{
-		return br;
-	}
-	public void setBr(BufferedReader br) 
-	{
-		this.br = br;
-	}
-
-	//Getter & Setter: StringBuilder sb
-	public StringBuilder getSb() 
-	{
-		return sb;
-	}
-	public void setSb(StringBuilder sb) 
-	{
-		this.sb = sb;
-	}
-
-	//Getter & Setter: Line
-	public String getLine() 
-	{
-		return line;
-	}
-	public void setLine(String line) 
-	{
-		this.line = line;
 	}
 }

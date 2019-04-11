@@ -1,3 +1,11 @@
+/*******************************************
+ * TextRead: the purpose of this class is to take in the user input
+ * from the TextGUI or FileRead classes and analyse them to check how 
+ * much of them is formal and informal language. 
+ * Author: Glory Pierce Eguare
+ * OS: WIndows
+ */
+
 package com.Assignment_1.test;
 
 import java.io.File;
@@ -16,7 +24,6 @@ public class TextRead
 	private int high;
 	private float wordcount = 0;
 	private float formal, slang = 0;
-	private float total = 0;
 	private float formalp, slangp = 0;
 	private File fileName;
 	private Scanner myScanner;
@@ -31,7 +38,7 @@ public class TextRead
 	    {
 	    	String[] a1 = reMatcher.group().split(" ");
 	    	
-	    	if(a1.length > 20 /*&& reMatcher.group().indexOf(",")!=-1*/) //indexOf(",")!=-1)
+	    	if(a1.length > 20)
 	    	{
 	    		if(reMatcher.group().indexOf(",")!=-1 || reMatcher.group().indexOf(";")!=-1)
 	    		{
@@ -60,7 +67,6 @@ public class TextRead
 	        if (reMatcher.group().charAt(0) == (reMatcher.group().toUpperCase().charAt(0)))
 		    {
 	        	formal +=1;
-	         	//System.out.println("First letter in word "+ text + " is upper case");
 		    }
 	        else
 	        {
@@ -93,7 +99,6 @@ public class TextRead
 	    		if(Character.isUpperCase(ch))
 	    		{
 	    			high += 1;
-	    			System.out.println("High letter!");
 	    		}
 	    	}
 	    	
@@ -103,21 +108,25 @@ public class TextRead
 	    	{
 	    		formal += 1;
 	    	}
+	    	else
+	    	{
+	    		punct += 1;
+	    	}
 	    }
 	    
 	    try 
 	    {   
-	    	setFileName(new File("English.txt"));
+	    	fileName = new File("English.txt");
 		    
-		    setMyScanner(new Scanner(getFileName()));
+		    myScanner = new Scanner(fileName);
 	    	
 	    	// For each word in the input
-	    	while (getMyScanner().hasNext()) 
+	    	while (myScanner.hasNext()) 
 	    	{
-	    	    getDict().add(getMyScanner().next());
+	    	    dict.add(myScanner.next());
 	    	}
 	        
-	    	 getMyScanner().close();
+	    	 myScanner.close();
 	    } 
 	    catch(FileNotFoundException e) 
 	    { 
@@ -131,7 +140,7 @@ public class TextRead
         	System.out.println("yep");
         	wordcount += 1;
         	
-        	if (getDict().contains(a1[i])) 
+        	if (dict.contains(a1[i])) 
         	{
         		System.out.println("1");
             	formal +=1;
@@ -142,10 +151,8 @@ public class TextRead
         	}
 	    }
 	    
-	    //slang = a1.length - formal;
 	    slang = wordcount - formal;
 	    
-	    //total = formal + slang;
 	    System.out.println(wordcount);
 	    
 	    formalp = (100 * formal)/wordcount;
@@ -168,35 +175,5 @@ public class TextRead
 		
         TextGUI.results(a2);
         FileGUI.results(a2);
-	}
-
-	//Getter & Setter: Dict
-	public Set<String> getDict() 
-	{
-		return dict;
-	}
-	public void setDict(Set<String> dict) 
-	{
-		this.dict = dict;
-	}
-
-	//Getter & Setter: MyScanner
-	public Scanner getMyScanner()
-	{
-		return myScanner;
-	}
-	public void setMyScanner(Scanner myScanner) 
-	{
-		this.myScanner = myScanner;
-	}
-
-	//Getter & Setter: FileName
-	public File getFileName() 
-	{
-		return fileName;
-	}
-	public void setFileName(File fileName) 
-	{
-		this.fileName = fileName;
 	}
 }

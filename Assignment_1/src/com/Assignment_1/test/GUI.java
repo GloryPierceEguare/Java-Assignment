@@ -1,3 +1,11 @@
+/*******************************************
+ * GUI: the purpose of this class is to display the home screen GUI.
+ * The user can also interact with the GUI and find out more about the 
+ * program. 
+ * Author: Glory Pierce Eguare
+ * OS: WIndows
+ */
+
 package com.Assignment_1.test;
 
 import java.awt.BorderLayout;
@@ -29,9 +37,9 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 	private JLabel label4;
 	
 	//Constructor
-	public GUI(/*String title*/)
+	public GUI()
 	{
-		//super(/*title*/);
+		//Set layout to BorderLayout
 		setLayout(new BorderLayout());
 	
 		button1 = new JButton("Choose File");
@@ -140,7 +148,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 		
 		if(event.getSource() == label3)
 		{
-			JOptionPane.showMessageDialog(this,"If a sentence does not start with a capital letter or end in a\n sentence-ender e.g. fullstop then this is informal.");
+			JOptionPane.showMessageDialog(this,"If a sentence does not start with a capital letter or end in a\n sentence-ender e.g. fullstop then this is informal.\nAlso if there is random upper case letters in the middle of a word this is deemed as informal.");
 		}
 		
 		if(event.getSource() == label4)

@@ -1,3 +1,11 @@
+/*******************************************
+ * TextGUI: the purpose of this class is to display the text-reading GUI to the user.
+ * In the TextGUI class the user can enter in a string whether it be a sentence or a paragraph
+ * and it is then sent to be analysed.
+ * Author: Glory Pierce Eguare
+ * OS: WIndows
+ */
+
 package com.Assignment_1.test;
 
 import java.awt.BorderLayout;
@@ -28,7 +36,7 @@ public class TextGUI extends JFrame implements ActionListener
 	
 	public TextGUI()
 	{
-		super();//Delete before submit?
+		//Set layout to BorderLayout
 		setLayout(new BorderLayout());
 		
 		field1 = new JTextField(100);
@@ -90,7 +98,6 @@ public class TextGUI extends JFrame implements ActionListener
 			{
 				check = 1;
 				setSentence(field1.getText());
-				System.out.println(getSentence());//Delete before submit
 				Passer(getSentence());
 			}
 		}
@@ -111,35 +118,25 @@ public class TextGUI extends JFrame implements ActionListener
 			}
 			else
 			{
-				System.out.println("string is: "+getA3()[0]+"% formal language.");//Delete before submit
-			    System.out.println("string is: "+getA3()[1]+"% informal language.");//Delete before submit
 				area1.setText(null);
-				area1.append("This text is: "+getTwodec().format(getA3()[0])+"% formal language.\nThis text is: "+getTwodec().format(getA3()[1])+"% informal language.");
-				area1.append("\n\nSpelling Errors: "+getZerodec().format(getA3()[2])+"\nPunctuation Errors: "+getZerodec().format(getA3()[3])+"\nSentence Structure Errors: "+getZerodec().format(getA3()[4]));
+				area1.append("This text is: "+twodec.format(a3[0])+"% formal language.\nThis text is: "+twodec.format(a3[1])+"% informal language.");
+				area1.append("\n\nSpelling Errors: "+zerodec.format(a3[2])+"\nPunctuation Errors: "+zerodec.format(a3[3])+"\nSentence Structure Errors: "+zerodec.format(a3[4]));
 			}
 		}
 	}
 	
 	public static void Passer(String sentence)
 	{
-		System.out.println(sentence.toLowerCase());//Delete before submit
 		TextRead s1 = new TextRead();
 		s1.addSentence(sentence);
 	}
 	
 	public static void results(float[] a2)
 	{
-		System.out.println("This string is: "+a2[0]+"% formal language.");//Delete before submit
-	    System.out.println("This string is: "+a2[1]+"% informal language.");//Delete before submit
-	    System.out.println("--------------------------------");//Delete before submit
-	    
-	    
 	    for(int i=0;i<a2.length;++i)
 	    {
-			getA3()[i]=a2[i];
+			a3[i]=a2[i];
 		}
-	    System.out.println("string is: "+getA3()[0]+"% formal language.");//Delete before submit
-	    System.out.println("string is: "+getA3()[1]+"% informal language.");//Delete before submit
 	}
 
 	//Getter & Setter: Sentence
@@ -150,35 +147,5 @@ public class TextGUI extends JFrame implements ActionListener
 	public void setSentence(String sentence) 
 	{
 		this.sentence = sentence;
-	}
-
-	//Getter & Setter: Twodec
-	public DecimalFormat getTwodec() 
-	{
-		return twodec;
-	}
-	public void setTwodec(DecimalFormat twodec) 
-	{
-		this.twodec = twodec;
-	}
-
-	//Getter & Setter: Zerodec
-	public DecimalFormat getZerodec() 
-	{
-		return zerodec;
-	}
-	public void setZerodec(DecimalFormat zerodec) 
-	{
-		this.zerodec = zerodec;
-	}
-
-	//Getter & Setter: a3[]
-	public static float[] getA3() 
-	{
-		return a3;
-	}
-	public static void setA3(float a3[]) 
-	{
-		TextGUI.a3 = a3;
 	}
 }

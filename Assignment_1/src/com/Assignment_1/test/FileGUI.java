@@ -1,3 +1,11 @@
+/*******************************************
+ * FileGUI: the purpose of this class is to display the file-reading GUI to the user.
+ * In the FileGUI class the user can enter a file through the filechooser and send it off
+ * for it to be analysed.
+ * Author: Glory Pierce Eguare
+ * OS: WIndows
+ */
+
 package com.Assignment_1.test;
 
 import java.awt.BorderLayout;
@@ -26,12 +34,13 @@ public class FileGUI extends JFrame implements ActionListener
 	private File selectedFile;
 	private DecimalFormat twodec = new DecimalFormat("#.00");
 	private DecimalFormat zerodec = new DecimalFormat("#");
-	static float a3[] = new float[5];
+	private static float a3[] = new float[5];
 	private int check = 0;
+	private String name;
 
 	public FileGUI()
 	{
-		//super();
+		//Set layout to BorderLayout
 		setLayout(new BorderLayout());
 		
 		button1 = new JButton("BACK");
@@ -95,11 +104,10 @@ public class FileGUI extends JFrame implements ActionListener
 			}
 			else
 			{
-				System.out.println("string is: "+a3[0]+"% formal language.");//Delete before submit
-			    System.out.println("string is: "+a3[1]+"% informal language.");//Delete before submit
 				area1.setText(null);
-				area1.append("This file is: "+getTwodec().format(a3[0])+"% formal language.\nThis file is: "+getTwodec().format(a3[1])+"% informal language.");
-				area1.append("\n\nSpelling Errors: "+getZerodec().format(a3[2])+"\nPunctuation Errors: "+getZerodec().format(a3[3])+"\nSentence Structure Errors: "+getZerodec().format(a3[4]));
+				area1.append("Selected file: "+name);
+				area1.append("\n\nThis file is: "+twodec.format(a3[0])+"% formal language.\nThis file is: "+twodec.format(a3[1])+"% informal language.");
+				area1.append("\n\nSpelling Errors: "+zerodec.format(a3[2])+"\nPunctuation Errors: "+zerodec.format(a3[3])+"\nSentence Structure Errors: "+zerodec.format(a3[4]));
 			}
 		}
 		
@@ -113,15 +121,12 @@ public class FileGUI extends JFrame implements ActionListener
 		    
 		    if(returnVal == JFileChooser.APPROVE_OPTION) 
 		    {
-		    	String name = chooser.getSelectedFile().getName();
-		    	System.out.println(name);
+		    	name = chooser.getSelectedFile().getName();
 		    	
 		    	if(name.endsWith(".txt"))
 		    	{
 		    		check = 1;
-		    		File selectedFile = chooser.getSelectedFile();
-			    	//System.out.println("You chose to open this file: " +chooser.getSelectedFile().getName());
-			    	System.out.println("Selected file: " + chooser.getSelectedFile().getAbsolutePath());//Delete before submit
+		    		selectedFile = chooser.getSelectedFile();
 			    	Passer2(selectedFile);
 		    	}
 		    	else
@@ -140,46 +145,9 @@ public class FileGUI extends JFrame implements ActionListener
 	
 	public static void results(float[] a2)
 	{
-		System.out.println("This string is: "+a2[0]+"% formal language.");//Delete before submit
-	    System.out.println("This string is: "+a2[1]+"% informal language.");//Delete before submit
-	    System.out.println("--------------------------------");//Delete before submit
-	    
-	    
 	    for(int i=0;i<a2.length;++i)
 	    {
 			a3[i]=a2[i];
 		}
-	    System.out.println("string is: "+a3[0]+"% formal language.");//Delete before submit
-	    System.out.println("string is: "+a3[1]+"% informal language.");//Delete before submit
-	}
-
-	//Getter & Setter: SelectedFile
-	public File getSelectedFile() 
-	{
-		return selectedFile;
-	}
-	public void setSelectedFile(File selectedFile) 
-	{
-		this.selectedFile = selectedFile;
-	}
-
-	//Getter & Setter: Twodec
-	public DecimalFormat getTwodec() 
-	{
-		return twodec;
-	}
-	public void setTwodec(DecimalFormat twodec) 
-	{
-		this.twodec = twodec;
-	}
-
-	//Getter & Setter Zerodec
-	public DecimalFormat getZerodec() 
-	{
-		return zerodec;
-	}
-	public void setZerodec(DecimalFormat zerodec) 
-	{
-		this.zerodec = zerodec;
 	}
 }
