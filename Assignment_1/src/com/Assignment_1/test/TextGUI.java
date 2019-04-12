@@ -15,6 +15,7 @@ import java.text.DecimalFormat;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -28,6 +29,7 @@ public class TextGUI extends JFrame implements ActionListener
 	private JButton button1;
 	private JButton button2;
 	private JButton button3;
+	private JLabel label1;
 	private String sentence;
 	private DecimalFormat twodec = new DecimalFormat("#.00");
 	private DecimalFormat zerodec = new DecimalFormat("#");
@@ -45,6 +47,7 @@ public class TextGUI extends JFrame implements ActionListener
 		button1 = new JButton("ENTER");
 		button2 = new JButton("BACK");
 		button3 = new JButton("SHOW RESULTS");
+		label1 = new JLabel("Enter text here: ");
 		
 		//Set size of text field and text area
 		field1.setColumns(30);
@@ -62,6 +65,7 @@ public class TextGUI extends JFrame implements ActionListener
 		add(panel3, BorderLayout.CENTER);
 		
 		//Add attributes to panels
+		panel1.add(label1);
 		panel1.add(field1);
 		panel1.add(button1);
 		panel1.add(button3);
