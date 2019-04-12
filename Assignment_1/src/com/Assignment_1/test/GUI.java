@@ -42,6 +42,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 		//Set layout to BorderLayout
 		setLayout(new BorderLayout());
 	
+		//Create attributes
 		button1 = new JButton("Choose File");
 		button2 = new JButton("Enter Text");
 		button3 = new JButton("EXIT");
@@ -113,7 +114,8 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 		label3.addMouseListener(this);
 		label4.addMouseListener(this);
 	}
-		
+	
+	//Action listeners to take button inputs
 	public void actionPerformed(ActionEvent event) 
 	{
 		if(event.getSource() == button1)
@@ -136,7 +138,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 		}
 	}
 
-	@Override
+	//Events if labels are clicked
 	public void mouseClicked(MouseEvent event) 
 	{
 		// TODO Auto-generated method stub	
@@ -157,7 +159,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 		}
 	}
 
-	@Override
+	//Events if mouse hovers over the labels
 	public void mouseEntered(MouseEvent event) 
 	{
 		// TODO Auto-generated method stub
@@ -182,7 +184,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener
 		}
 	}
 	
-	@Override
+	//Events when mouse moves away from the labels
 	public void mouseExited(MouseEvent event) 
 	{	
 		if(event.getSource() == label2)

@@ -39,6 +39,7 @@ public class TextGUI extends JFrame implements ActionListener
 		//Set layout to BorderLayout
 		setLayout(new BorderLayout());
 		
+		//Create attributes
 		field1 = new JTextField(100);
 		area1 = new JTextArea();
 		button1 = new JButton("ENTER");
@@ -85,9 +86,10 @@ public class TextGUI extends JFrame implements ActionListener
 		JOptionPane.showMessageDialog(this,"Instructions:\n1. Enter text in the provided text box.\n2. Press 'Enter' to enter this text.\n3. Press 'Show Results' to display the outcome.");
 	}
 
-	@Override
+	//Action listeners to take button inputs
 	public void actionPerformed(ActionEvent event) 
 	{
+		//Send the string in the text field to the TextRead class and error checking
 		if(event.getSource() == button1)
 		{
 			if(field1.getText().isEmpty())
@@ -102,6 +104,7 @@ public class TextGUI extends JFrame implements ActionListener
 			}
 		}
 		
+		//Button to return back to the home GUI screen
 		if(event.getSource() == button2)
 		{
 			check = 0;
@@ -110,6 +113,7 @@ public class TextGUI extends JFrame implements ActionListener
 			gui.setVisible(true);
 		}
 		
+		//Button to show your results and error checking
 		if(event.getSource() == button3)
 		{
 			if(check == 0)
@@ -125,12 +129,14 @@ public class TextGUI extends JFrame implements ActionListener
 		}
 	}
 	
+	//Method: to pass the string to the TextRead class
 	public static void Passer(String sentence)
 	{
 		TextRead s1 = new TextRead();
 		s1.addSentence(sentence);
 	}
 	
+	//Method: to take in the results from the analysed string from the TextRead class
 	public static void results(float[] a2)
 	{
 	    for(int i=0;i<a2.length;++i)

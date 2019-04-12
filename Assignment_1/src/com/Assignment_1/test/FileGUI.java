@@ -43,6 +43,7 @@ public class FileGUI extends JFrame implements ActionListener
 		//Set layout to BorderLayout
 		setLayout(new BorderLayout());
 		
+		//Create attributes
 		button1 = new JButton("BACK");
 		button2 = new JButton("Show Results");
 		button3 = new JButton("Files");
@@ -86,9 +87,10 @@ public class FileGUI extends JFrame implements ActionListener
 		JOptionPane.showMessageDialog(this,"Instructions:\n1. Press 'File' to enter the file explorer.\n2. Choose the file that you want to analyse.\n3. Press 'Open' to select that file.\n4. Press 'Show Results' to display your results.");
 	}
 
-	@Override
+	//Action listeners 
 	public void actionPerformed(ActionEvent event) 
 	{
+		//Button to return to the home GUI class
 		if(event.getSource() == button1)
 		{
 			this.dispose();
@@ -96,6 +98,7 @@ public class FileGUI extends JFrame implements ActionListener
 			gui.setVisible(true);
 		}
 		
+		//Button to display results and error checking
 		if(event.getSource() == button2)
 		{
 			if(check == 0)
@@ -111,6 +114,7 @@ public class FileGUI extends JFrame implements ActionListener
 			}
 		}
 		
+		//Button to choose file and error checking
 		if(event.getSource() == button3)
 		{
 			chooser = new JFileChooser();
@@ -137,12 +141,14 @@ public class FileGUI extends JFrame implements ActionListener
 		}
 	}
 	
+	//Method: to pass the selected file to the FileRead class
 	public static void Passer2(File selectedFile)
 	{
 		FileRead f1 = new FileRead();
 		f1.addFile(selectedFile);
 	}
 	
+	//Method: to take in the analysed results from the TextRead class
 	public static void results(float[] a2)
 	{
 	    for(int i=0;i<a2.length;++i)

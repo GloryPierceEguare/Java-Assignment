@@ -30,6 +30,7 @@ public class FileRead
 			sb = new StringBuilder();
 
 		    line = br.readLine();
+		    //Append each read line to the end of the string
 		    while (line != null) 
 		    {
 		    	sb.append(line).append("\n");
@@ -38,6 +39,7 @@ public class FileRead
 
 		    sentence = sb.toString();
 		    
+		    //Pass the created string to the TextRead class for it to be analysed
 		    TextRead f1 = new TextRead();
 		    f1.addSentence(sentence);
 			

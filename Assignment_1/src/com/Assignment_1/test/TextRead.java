@@ -27,17 +27,20 @@ public class TextRead
 	private float formalp, slangp = 0;
 	private File fileName;
 	private Scanner myScanner;
+	private Matcher reMatcher;
 	private Set<String> dict = new HashSet<>();
 
 	public void addSentence(String sentence) 
 	{ 
-	    //https://stackoverflow.com/questions/21430447/how-to-split-paragraphs-into-sentences
+		//Split the sting up into sentences
+	    //These next two lines of code were taken from: https://stackoverflow.com/questions/21430447/how-to-split-paragraphs-into-sentences
 	    Pattern re = Pattern.compile("[^.!?\\s][^.!?]*(?:[.!?](?!['\"]?\\s|$)[^.!?]*)*[.!?]?['\"]?(?=\\s|$)", Pattern.MULTILINE | Pattern.COMMENTS);
-	    Matcher reMatcher = re.matcher(sentence);
+	    reMatcher = re.matcher(sentence);
 	    while (reMatcher.find()) 
 	    {
 	    	String[] a1 = reMatcher.group().split(" ");
 	    	
+	    	//Check if a sentence longer than twenty words contains a break
 	    	if(a1.length > 20)
 	    	{
 	    		if(reMatcher.group().indexOf(",")!=-1 || reMatcher.group().indexOf(";")!=-1)
@@ -52,16 +55,16 @@ public class TextRead
 	    		}	
 	    	}
 	        
-	        //Check for more than one fullstop, exclamation mark or space
+	        //Check for more than one full stop, exclamation mark or space
 	        if(reMatcher.group().indexOf("..")!=-1 || reMatcher.group().indexOf("!!")!=-1 || reMatcher.group().indexOf("  ")!=-1)
 	        {
 	        	wordcount += 1;
 	        	punct += 1;
 	        }
 	        
+	        //Check if the first character in a sentence is upper case
 	        wordcount += 1;
-	        
-	        //https://stackoverflow.com/questions/4452939/in-java-how-to-find-if-first-character-in-a-string-is-upper-case-without-regex
+	        //This next line of code was taken from: https://stackoverflow.com/questions/4452939/in-java-how-to-find-if-first-character-in-a-string-is-upper-case-without-regex
 	        if (reMatcher.group().charAt(0) == (reMatcher.group().toUpperCase().charAt(0)))
 		    {
 	        	formal +=1;
@@ -71,17 +74,17 @@ public class TextRead
 	        	punct += 1;
 	        }
 	        
-	        wordcount += 1;
-	        
+	        //Check if the sentence ends with a sentence ender
+	        wordcount += 1; 
 	        if(reMatcher.group().endsWith(".")||reMatcher.group().endsWith("!")||reMatcher.group().endsWith("?")) //punct = regex
 	        {
-	    		formal += 1;
-	    	}
+	        	formal += 1;
+	        }
 	        else
 	        {
 	        	punct += 1;
 	        }
-	    } 
+    	} 
 	    
 	    String[] a1 = sentence.split(" ");    
 	    
@@ -91,7 +94,7 @@ public class TextRead
 		    
 		    myScanner = new Scanner(fileName);
 	    	
-	    	// For each word in the input
+	    	//Add each word in the dictionary text file into a HashSet
 	    	while (myScanner.hasNext()) 
 	    	{
 	    	    dict.add(myScanner.next());
@@ -106,15 +109,16 @@ public class TextRead
 	    
         for(i=0; i<a1.length;i++)
 	    {
-        	a1[i] = a1[i].replaceAll("[^a-zA-Z0-9]","").toLowerCase(); //https://stackoverflow.com/questions/22367028/given-a-txt-file-i-need-to-lower-case-and-remove-punctuation
+        	//This next line of code from: https://stackoverflow.com/questions/22367028/given-a-txt-file-i-need-to-lower-case-and-remove-punctuation
+        	a1[i] = a1[i].replaceAll("[^a-zA-Z0-9]","").toLowerCase(); 
         	
+        	//Check if each word in the string is in the dictionary text file
         	wordcount += 1;
-        	
         	if (dict.contains(a1[i])) 
         	{
             	formal +=1;
             	
-            	//Check if there is random capital letters in the middle of a word
+            	//Check if there is random upper case letters in the middle of a word
     	    	high = 0;
     	    	
     	    	for(y = 1;y < a1[i].length();y++)
@@ -144,14 +148,15 @@ public class TextRead
         	}
 	    }
 	    
+        //Calculations of data collected
 	    slang = wordcount - formal;
-	    
 	    formalp = (100 * formal)/wordcount;
 	    slangp = (100 * slang)/wordcount;
 	    
 	    result();
 	}
 	
+	//Method: to return the data collected back to the GUI classes
 	public void result()
 	{
 		float a2[] = new float[5];
