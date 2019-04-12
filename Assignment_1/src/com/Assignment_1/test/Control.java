@@ -8,6 +8,7 @@ package com.Assignment_1.test;
 
 public class Control 
 {
+	//Run the whole program
 	public static void main(String[] args) 
 	{
 		GUI gui = new GUI();
